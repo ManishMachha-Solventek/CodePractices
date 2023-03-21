@@ -1,0 +1,6 @@
+<div class="add-image text-center">
+    <form [formGroup]="imageForm" (ngSubmit)="uploadImage()" >
+        <input class="form-control mt-5" formControlName="image" type="file" (change)="selectFile($event)">
+        <button class="btn btn-primary mt-3" type="submit">Add</button>
+    </form>
+</div>

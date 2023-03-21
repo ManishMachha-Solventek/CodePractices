@@ -1,0 +1,17 @@
+<div class="img-table">
+    <table>
+        <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>image</th>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let img of images">
+                <td>{{img.id}}</td>
+                <td>{{img.name}}</td>
+                <td><img src='{{img.image}}' width="100vw"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
