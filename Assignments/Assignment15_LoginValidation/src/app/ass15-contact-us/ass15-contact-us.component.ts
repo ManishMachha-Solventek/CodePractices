@@ -16,6 +16,10 @@ export class Ass15ContactUsComponent {
   message: any;
   fileInfos: any;
 
+  ngOnInit(){
+    sessionStorage.setItem('currentURL','contact')
+  }
+
   constructor(
     private http: UsersService,
     private fb: FormBuilder,

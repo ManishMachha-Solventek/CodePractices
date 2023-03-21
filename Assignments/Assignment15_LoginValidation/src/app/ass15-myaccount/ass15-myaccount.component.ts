@@ -8,7 +8,7 @@ export interface User {
   email: string;
   gender: string;
   phonenumber: number;
-  role:string
+  role: string;
 }
 
 @Component({
@@ -25,12 +25,13 @@ export class Ass15MyaccountComponent {
     email: '',
     gender: '',
     phonenumber: 0,
-    role:''
+    role: '',
   };
 
   constructor(private user_service: UsersService) {}
 
   ngOnInit() {
+    sessionStorage.setItem('currentURL', 'myaccount');
     if (this.session != null) {
       this.user_service
         .getUserByUsername(this.session)

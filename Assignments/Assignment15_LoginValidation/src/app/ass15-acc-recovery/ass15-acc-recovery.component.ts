@@ -16,10 +16,11 @@ export class Ass15AccRecoveryComponent {
   ) {}
 
   userNAME: any;
-  sessionLength: number = sessionStorage.length;
+  session: any = sessionStorage.getItem('session');
   accountVerified: boolean = false;
   recoverStatus: any;
   OTP: number = 0;
+  otpSent: boolean = false;
   userID: any = '';
 
   VerifyEmailForm: FormGroup = this.fb.group({
@@ -127,14 +128,18 @@ export class Ass15AccRecoveryComponent {
       .getUserByEmail(this.VerifyEmailForm.get('email')?.value)
       .subscribe((res: any) => {
         if (res.status == 200) {
-          this.OTP = Math.floor(Math.random() * 9000) + 1000;
           this.user_service
-            .sendEmail(
-              this.VerifyEmailForm.get('email')?.value,
-              'Account recovery',
-              'Your OTP is ' + this.OTP
-            )
-            .subscribe();
+            .sendOTP(this.VerifyEmailForm.get('email')?.value)
+            .subscribe((res: any) => {
+              if (res.status === 200) {
+                this.otpSent = true;
+                this.OTP = res.otp;
+              } else {
+                this.openSnackBar(
+                  'Something went wrong. Please try again later.'
+                );
+              }
+            });
         } else {
           this.openSnackBar('Email does not exists');
         }
@@ -142,7 +147,7 @@ export class Ass15AccRecoveryComponent {
   }
 
   verifyOTP() {
-    if (this.OTPForm.get('otp')?.value === this.OTP) {
+    if (this.OTPForm.get('otp')?.value == this.OTP) {
       this.accountVerified = true;
     } else {
       this.openSnackBar('Wrong OTP entered. Please try again');
@@ -182,7 +187,7 @@ export class Ass15AccRecoveryComponent {
   }
 
   ngOnInit() {
-    if (this.sessionLength > 0) {
+    if (this.session) {
       window.location.replace('users');
     }
   }

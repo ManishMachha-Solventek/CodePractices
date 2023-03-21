@@ -1,8 +1,10 @@
 package com.assignment15.assignment15_backend.controllers;
 
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -199,6 +201,34 @@ public class UserController {
         }
     }
 
+    // user by username and password
+    @GetMapping("login/{uname}/{pass}")
+    public ResponseEntity<?> userByUsernamePassword(@PathVariable Map<String, String> pathVarsMap) {
+        String username = pathVarsMap.get("uname");
+        String password = pathVarsMap.get("pass");
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map = new LinkedHashMap<String, Object>();
+        List<Users> users;
+        try {
+            users = repo.userLogin(username, password);
+            if (!users.isEmpty()) {
+                map.put("status", 200);
+                map.put("data", users);
+                return new ResponseEntity<>(map, HttpStatus.OK);
+            } else {
+                map.clear();
+                map.put("status", 404);
+                map.put("message", "Data is not found");
+                return new ResponseEntity<>(map, HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            map.clear();
+            map.put("status", 404);
+            map.put("message", "Data is not found");
+            return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
+        }
+    }
+
     // user by phonenumber
     @GetMapping("phone/{phonenumber}")
     @Secured({ "ROLE_ADMIN", "ROLE_ACC_REC" })
@@ -279,6 +309,30 @@ public class UserController {
         }
     }
 
+    // send OTP
+    @GetMapping("sendotp/{to}")
+    @Secured({ "ROLE_ADMIN", "ROLE_ACC_REC" })
+    public ResponseEntity<?> sendOTP(@PathVariable Map<String, String> pathVarsMap) {
+        String to = pathVarsMap.get("to");
+        String subject = "Account recovery";
+        Random rand = new Random();
+        String otp = new DecimalFormat("0000").format(rand.nextInt(9999));
+        String body = "Your OTP for recovering your account is " + otp;
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        try {
+            email_service.sendEmail(to, subject, body);
+            map.put("status", 200);
+            map.put("message", "OTP sent");
+            map.put("otp", otp);
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        } catch (Exception e) {
+            map.clear();
+            map.put("status", 500);
+            map.put("message", "sending OTP failed. Internal server error.");
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
+    }
+
     // login
     @GetMapping("login")
     public String Login(@RequestParam Map<String, String> credentials) {
@@ -328,3 +382,14 @@ public class UserController {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+

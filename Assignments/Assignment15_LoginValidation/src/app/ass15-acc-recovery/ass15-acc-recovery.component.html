@@ -1,4 +1,4 @@
-<div class="login" *ngIf="sessionLength==0">
+<div class="login" *ngIf="!session">
 
     <div class="section-1">
         <div class="container mt-4 p-5">
@@ -8,7 +8,7 @@
 
                 <ng-template #VERIFY>
                     <!-- left col -->
-                    <div class="col mt-5 form-col" *ngIf="OTP==0">
+                    <div class="col mt-5 form-col" *ngIf="!otpSent">
 
                         <div class="h3 text-center form-label">Verify Email</div>
                         <div class=" text-center text-danger h6">Please enter your registered email</div>
@@ -41,7 +41,7 @@
 
                     </div>
 
-                    <div class="col mt-5 form-col" *ngIf="OTP!=0">
+                    <div class="col mt-5 form-col" *ngIf="otpSent">
                         <div class="h3 text-center form-label">Verify Email</div>
                         <div class=" text-center text-danger h6">Please enter OTP sent to your email</div>
 

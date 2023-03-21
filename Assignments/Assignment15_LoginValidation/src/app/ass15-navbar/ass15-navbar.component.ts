@@ -11,7 +11,8 @@ export class Ass15NavbarComponent {
   collapsed_1 = false;
   session: any = sessionStorage.getItem('session');
 
-  constructor(private confirmationDialogService: ConfirmationDialogService) {}
+  constructor(private confirmationDialogService: ConfirmationDialogService) {
+  }
 
   logOut() {
     this.confirmationDialogService
@@ -19,7 +20,7 @@ export class Ass15NavbarComponent {
       .then(() => {
         sessionStorage.clear();
         localStorage.clear();
-        
+
         window.location.replace('login');
       })
       .catch(() => {

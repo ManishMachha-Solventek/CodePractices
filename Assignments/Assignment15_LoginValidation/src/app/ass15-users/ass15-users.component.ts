@@ -44,6 +44,7 @@ export class Ass15UsersComponent {
   displayedColumns: string[];
 
   ngOnInit() {
+    sessionStorage.setItem('currentURL', 'users');
     this.loadData();
 
     if (this.userRole == 'ROLE_ADMIN') {

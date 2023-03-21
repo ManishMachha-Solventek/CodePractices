@@ -18,7 +18,7 @@ export class Ass15RegisterComponent {
 
   respStatus: any = 0;
   isPasswordMatch: boolean = false;
-  sessionLength: number = sessionStorage.length;
+  session: any = sessionStorage.getItem('session');
 
   // Register form-group
   RegisterForm = this.fb.group({
@@ -81,9 +81,10 @@ export class Ass15RegisterComponent {
   });
 
   ngOnInit() {
-    // if (this.sessionLength > 0) {
-    //   window.location.replace('users');
-    // }
+    sessionStorage.setItem('currentURL', 'register');
+    if (this.session) {
+      window.location.replace('users');
+    }
 
     document.getElementById('fullname')?.setAttribute('maxlength', '100');
 
@@ -166,7 +167,6 @@ export class Ass15RegisterComponent {
 
   togglePassword() {
     var passwordField = <HTMLInputElement>document.getElementById('password');
-
     if (passwordField!.type === 'password') {
       passwordField!.type = 'text';
     } else {

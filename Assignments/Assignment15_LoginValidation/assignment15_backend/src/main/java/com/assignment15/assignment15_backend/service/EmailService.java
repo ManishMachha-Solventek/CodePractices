@@ -7,7 +7,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
 @Service
@@ -23,16 +22,13 @@ public class EmailService {
         message.setSubject(subject);
         message.setText(body);
 
-        try {
-            mailSender.send(message);
-            System.out.println("Mail sent");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        mailSender.send(message);
+        System.out.println("Mail sent");
+
     }
 
     public void sendEmailAttatchment(String ToEmail, String subject, String body, MultipartFile file)
-            throws MessagingException {
+            throws Exception {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 

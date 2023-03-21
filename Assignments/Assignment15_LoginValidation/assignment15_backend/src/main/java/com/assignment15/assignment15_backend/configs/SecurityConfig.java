@@ -35,8 +35,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/users/**")
-                // .authenticated()
-                .permitAll()
+                .authenticated()
                 .and()
                 .httpBasic()
                 .and().build();

@@ -29,6 +29,7 @@ import { Ass15ContactUsComponent } from './ass15-contact-us/ass15-contact-us.com
 import { MyLoaderComponent } from './my-loader/my-loader.component';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import { LoaderService } from './loader.service';
+import { LogincomponentComponent } from './logincomponent/logincomponent.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { LoaderService } from './loader.service';
     Ass15ContactUsComponent,
     MyLoaderComponent,
     MyLoaderComponent,
+    LogincomponentComponent,
   ],
   imports: [
     SweetAlert2Module,

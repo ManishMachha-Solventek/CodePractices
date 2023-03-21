@@ -1,5 +1,10 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +25,7 @@ export class UsersService {
   };
 
   // Login request
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<Object[]> {
     let parameters = { username: username, password: password };
     let queryParams = new HttpParams({ fromObject: parameters });
 
@@ -31,7 +36,9 @@ export class UsersService {
       }),
       params: queryParams,
     };
-    return this.http.get<Object[]>(`${this.baseURL}/users/login`, httpOptions1);
+
+    return this.http
+      .get<Object[]>(`${this.baseURL}/users/login`, httpOptions1)
   }
 
   // Get all users
@@ -133,6 +140,20 @@ export class UsersService {
     };
     return this.http.get<Object[]>(
       `${this.baseURL}/users/mail/${to}/${subject}/${body}`,
+      httpOptions
+    );
+  }
+
+  // send otp
+  sendOTP(to: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa('acc_recovery:accRec@0000'),
+      }),
+    };
+    return this.http.get<Object[]>(
+      `${this.baseURL}/users/sendotp/${to}`,
       httpOptions
     );
   }

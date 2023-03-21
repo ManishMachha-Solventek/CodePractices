@@ -145,7 +145,7 @@ export class EditOverlayComponent {
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'OK', {
-      // duration: 2000,
+      duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
       panelClass: ['updateSnackbar'],

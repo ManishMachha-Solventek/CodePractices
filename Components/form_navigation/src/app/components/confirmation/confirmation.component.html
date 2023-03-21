@@ -1,0 +1,62 @@
+<div class="confirmation">
+    <div class="container">
+
+        <!-- HEADING -->
+        <div class="heading h3 text-center">Verify submitted details</div>
+
+        <!-- DATA -->
+        <div class="row submitted-data mt-5">
+            <div class="col">
+                <div class="h6 text-center">Personal Details</div>
+                <ul>
+                    <li>Firstname:&nbsp;{{finalDetails.firstname}}</li>
+                    <li>Lastname:&nbsp;{{finalDetails.lastname}}</li>
+                    <li>Age:&nbsp;{{finalDetails.age}}</li>
+                    <li>Phone:&nbsp;{{finalDetails.phone}}</li>
+                    <li>Aadhar:&nbsp;{{finalDetails.aadhar}}</li>
+                    <li>PAN:&nbsp;{{finalDetails.pan}}</li>
+                    <li>Gender:&nbsp;{{finalDetails.gender}}</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="h6 text-center">Address</div>
+                <ul>
+                    <li>Area:&nbsp;{{finalDetails.area}}</li>
+                    <li>City:&nbsp;{{finalDetails.city}}</li>
+                    <li>District:&nbsp;{{finalDetails.district}}</li>
+                    <li>State:&nbsp;{{finalDetails.state}}</li>
+                    <li>HNO:&nbsp;{{finalDetails.houseno}}</li>
+                    <li>PIN:&nbsp;{{finalDetails.pin}}</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="h6 text-center">Education</div>
+                <ul>
+                    <li>Secondary:&nbsp;{{finalDetails.secondaryInstitute}}</li>
+                    <li>GPA:&nbsp;{{finalDetails.secondaryGPA}}</li>
+                    <li>HighSchool:&nbsp;{{finalDetails.highSchoolInstitute}}</li>
+                    <li>GPA:&nbsp;{{finalDetails.highSchoolGPA}}</li>
+                    <li>Graduation:&nbsp;{{finalDetails.graduationInstitute}}</li>
+                    <li>GPA:&nbsp;{{finalDetails.graduationGPA}}</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="h6 text-center">Career</div>
+                <ul>
+                    <li>Organisation1:&nbsp;{{finalDetails.org1}}</li>
+                    <li>Role:&nbsp;{{finalDetails.role1}}</li>
+                    <li>Organisation2:&nbsp;{{finalDetails.org2}}</li>
+                    <li>Role:&nbsp;{{finalDetails.role2}}</li>
+                    <li>Organisation3:&nbsp;{{finalDetails.org3}}</li>
+                    <li>Role:&nbsp;{{finalDetails.role3}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="text-center mt-5">
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</div>

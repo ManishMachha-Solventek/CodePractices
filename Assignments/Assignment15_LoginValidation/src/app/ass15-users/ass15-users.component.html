@@ -1,24 +1,5 @@
-<div class="users">
-    <div *ngIf="sessionValid == null; then sessionBAD else sessionOK">
-    </div>
-
-    <ng-template #sessionBAD>
-        <div class="container" id="sessionBAD">
-
-            <div class="row">
-                <div class="text-center text-danger h4 col-sm col1">
-                    Please login to continue <button type="button" routerLink="/login"
-                        class="btn btn-primary m-3">Login</button>
-                </div>
-                <div class="container-fluid col-sm-auto">
-                    <img class="img-fluid mx-auto d-block" src="assets/images/users-login.png" width="500vw">
-                </div>
-            </div>
-
-        </div>
-    </ng-template>
-
-    <ng-template #sessionOK>
+<div class="users" id="users">
+    
         <div>
 
             <div class="h3 text-center mt-3" id="heading">
@@ -27,12 +8,12 @@
 
             <div class="text-center container mt-3">
                 <input id="search" matInput [(ngModel)]="search" (keyup)="applyFilter()" placeholder="Filter">
-                <button (click)="AddUser()" *ngIf="userRole=='ROLE_ADMIN'" class="btn btn-outline-danger btn-sm" style="margin-left: 10px;"
-                    placement="right" ngbTooltip="Add user">
+                <button (click)="AddUser()" *ngIf="userRole=='ROLE_ADMIN'" class="btn btn-outline-danger btn-sm"
+                    style="margin-left: 10px;" placement="right" ngbTooltip="Add user">
                     <i class="bi bi-person-add"></i>
                 </button>
             </div>
-            <div class="table table-responsive mat-elevation-z8 mt-3 mb-5" id="Users-table">
+            <div class="table table-responsive mat-elevation-z8 mt-3" id="Users-table">
 
                 <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
 
@@ -94,11 +75,11 @@
                     </ng-container>
 
                     <!-- edit Column -->
-                    <ng-container matColumnDef="edit" >
-                        <th mat-header-cell *matHeaderCellDef >
+                    <ng-container matColumnDef="edit">
+                        <th mat-header-cell *matHeaderCellDef>
                             Edit
                         </th>
-                        <td mat-cell *matCellDef="let user" > <button (click)="editUser(user.id)" class="edit-btn"
+                        <td mat-cell *matCellDef="let user"> <button (click)="editUser(user.id)" class="edit-btn"
                                 placement="right" ngbTooltip="Edit user {{user.id}}">Edit</button> </td>
                     </ng-container>
 
@@ -113,22 +94,23 @@
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-                    <tr id="r{{row.id}}" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
                 </table>
 
-                <!-- paginator -->
-                <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons
+            </div>
+
+            <div>
+                <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
-
             </div>
-
 
             <div class="text-center pt-5 text-danger">
-                <h4 class="mb-5">Committed to People, Committed to the Future.</h4>
+                <h4>Committed to People, Committed to the Future.</h4>
             </div>
         </div>
-    </ng-template>
+
 
     <app-ass15-footer></app-ass15-footer>
 </div>

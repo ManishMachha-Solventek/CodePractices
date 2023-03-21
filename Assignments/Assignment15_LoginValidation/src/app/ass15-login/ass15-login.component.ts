@@ -10,7 +10,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./ass15-login.component.css'],
 })
 export class Ass15LoginComponent {
-  sessionLength: number = sessionStorage.length;
+  session: any = sessionStorage.getItem('session');
   userRole: any;
   LoginForm = this.fb.group({
     username: ['', [Validators.required]],
@@ -25,7 +25,8 @@ export class Ass15LoginComponent {
   ) {}
 
   ngOnInit() {
-    if (this.sessionLength > 0) {
+    sessionStorage.setItem('currentURL','login')
+    if (this.session) {
       window.location.replace('users');
     }
   }
@@ -47,9 +48,14 @@ export class Ass15LoginComponent {
             });
         }
       },
-      (error) => {
-        sessionStorage.clear();
-        this.openSnackBar('Invalid credentials');
+      (error: Response) => {
+        if (error.status === 401) {
+          console.log(error);
+          sessionStorage.clear();
+          this.openSnackBar('Invalid credentials');
+        } else {
+          this.openSnackBar('Something went wrong. Please try again.');
+        }
       }
     );
   }
