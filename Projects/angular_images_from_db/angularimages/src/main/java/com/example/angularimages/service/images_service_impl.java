@@ -29,4 +29,14 @@ public class images_service_impl implements images_service {
         return repo.findById(id).get();
     }
 
+    @Override
+    public void deleteImage(int id) {
+        repo.deleteById(id);
+    }
+
+    @Override
+    public void updateImage(images image) {
+       repo.save(image);
+    }
+
 }

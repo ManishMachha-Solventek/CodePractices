@@ -12,4 +12,8 @@ public interface images_service {
 
     public images getImageById(int id);
 
+    public void deleteImage(int id);
+
+    public void updateImage(images image);
+
 }

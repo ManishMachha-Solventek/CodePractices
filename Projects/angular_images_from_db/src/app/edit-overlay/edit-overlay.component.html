@@ -1,0 +1,18 @@
+<div class="edit-overlay">
+
+    <div class="modal-header">
+        <div class="modal-title text-center h3">update Image</div>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="imageForm">
+            <input class="form-control mt-5" formControlName="image" type="file" (change)="selectFile($event)">
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="decline()">{{ btnCancelText }}</button>
+        <button type="button" class="btn btn-primary" [disabled]="imageForm.invalid" (click)="accept(updateID)">{{
+            btnOkText }}</button>
+    </div>
+
+</div>
