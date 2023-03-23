@@ -1,46 +1,9 @@
-<div class="img-table">
-    <table>
-        <thead>
-            <th>id</th>
-            <th>name</th>
-            <th>image</th>
-            <th>edit</th>
-            <th>delete</th>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let img of images">
-                <td>{{img.id}}</td>
-                <td>{{img.name}}</td>
-                <td><img src='{{img.image}}' width="100vw"></td>
-                <td><button class="edit-btn" (click)="updateImage(img.id)">Edit</button></td>
-                <td><button class="delete-btn" (click)="deleteImage(img.id)">Delete</button></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="add-image text-center">
+    <form [formGroup]="addImageForm" (ngSubmit)="uploadImage()">
+        <input class="form-control mt-5" formControlName="image" type="file" (change)="selectFile1($event)">
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="addImageForm.invalid">Add</button>
+    </form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="table" id="table">
 
@@ -51,12 +14,12 @@
         </div>
 
         <div class="text-center container mt-3">
-            <input id="search" matInput [(ngModel)]="search" (keyup)="applyFilter()" placeholder="Filter">
-
+            <input id="search" class="form-control" matInput [(ngModel)]="search" (keyup)="applyFilter()"
+                placeholder="Filter">
         </div>
         <div class="table table-responsive mat-elevation-z8 mt-3" id="Images-table">
 
-            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+            <table mat-table [dataSource]="dataSource" matSort>
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
