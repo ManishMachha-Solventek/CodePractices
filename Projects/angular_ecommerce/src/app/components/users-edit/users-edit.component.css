@@ -1,0 +1,36 @@
+.close {
+  border: none;
+  background-color: rgb(226, 226, 226);
+  border-radius: 5px;
+}
+
+.edit-overlay .modal-header {
+  display: block !important;
+}
+
+.edit-overlay label {
+  margin-left: 5px;
+}
+
+.edit-overlay .modal-title {
+  font-family: "Poppins", sans-serif;
+  color: blue;
+}
+
+.edit-overlay input:hover {
+  transform: scale(1.02);
+  border: 1px solid rgb(136, 0, 255);
+  box-shadow: 0px 0px 5px rgb(0, 0, 255);
+  transition: 500ms;
+}
+
+.edit-overlay input[type="password"] {
+  border-right: none;
+}
+
+.edit-overlay input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.edit-overlay select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

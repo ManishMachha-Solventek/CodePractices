@@ -1,0 +1,70 @@
+.NAVBAR {
+  position: sticky;
+  top: 0;
+  background-image: linear-gradient(
+    to left,
+    rgb(255, 223, 255),
+    rgb(255, 222, 222)
+  );
+  width: 100%;
+  z-index: 2;
+}
+
+.navbar .nav-link {
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  width: fit-content;
+  color: rgb(159, 0, 180);
+}
+
+.navbar .navbar-nav > .active > a {
+  display: none;
+}
+
+.navbar .navbar-nav a:hover {
+  color: rgb(159, 0, 180);
+  transform: scale(1.05);
+  font-weight: 600;
+}
+
+.navbar a:last-child {
+  margin-right: 10px;
+}
+
+.navbar .navbar-nav .logout {
+  color: red;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.navbar .navbar-nav .logout:hover {
+  background: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: red;
+}
+
+.navbar .dropdown button {
+  border: 1px solid rgb(167, 0, 189);
+}
+.navbar .dropdown button:hover {
+  border: 1px solid rgb(170, 60, 170);
+  background-color: rgb(170, 60, 170);
+}
+
+.navbar .dropdown-menu a {
+  background-color: transparent;
+  margin: 0;
+}
+
+.navbar .dropdown-menu a:hover {
+  color: black;
+}
+
+.navbar .dropdown-menu {
+  --bs-dropdown-min-width: fit-content !important;
+}

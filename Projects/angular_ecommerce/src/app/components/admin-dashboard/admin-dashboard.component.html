@@ -1,0 +1,24 @@
+<div class="admin-dashboard">
+    <mat-drawer-container class="example-container">
+        <div *ngIf="btn1">
+            <button id="btn1" type="button" class="btn btn1" mat-button (click)="drawer.toggle();toggleBtn1()">
+                <i class="bi bi-arrow-right"></i>
+            </button>
+
+        </div>
+        <mat-drawer mode="side" opened #drawer>
+            <button type="button" id="btn" class="btn btn2" mat-button (click)="drawer.toggle();toggleBtn1()">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <ol>
+                <li routerLinkActive="active" class="nav-item" class="nav-link" routerLink="/products">
+                    <button class="sidenav-btn"><small class="bi bi-box-fill"></small>&nbsp; Products </button>
+                </li><br>
+                <li routerLinkActive="active" class="nav-item" class="nav-link" routerLink="/users">
+                    <button class="sidenav-btn"><small class="bi bi-people-fill"></small>&nbsp; Users</button>
+                </li><br>
+            </ol>
+        </mat-drawer>
+        <router-outlet></router-outlet>
+    </mat-drawer-container>
+</div>

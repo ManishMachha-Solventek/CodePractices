@@ -1,0 +1,22 @@
+footer a:hover,
+footer span:hover {
+  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, green);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+footer {
+  box-shadow: 0px -1px 5px lightgray;
+  background-color: white;
+}
+
+footer .logo {
+  font-family: "Dancing Script", cursive;
+  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, green);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
