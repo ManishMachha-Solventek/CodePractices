@@ -4,8 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog/confirmation-dialog.service';
+import { AddProductService } from 'src/app/services/products/add-product.service';
 import { ProductsEditService } from 'src/app/services/products/products-edit.service';
 import { ProductsService } from 'src/app/services/products/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -31,7 +33,7 @@ export class ProductsComponent {
     private service: ProductsService,
     private editOverlayService: ProductsEditService,
     private fb: FormBuilder,
-    private confirmService: ConfirmationDialogService
+    private add_service: AddProductService
   ) {}
 
   // on init
@@ -47,25 +49,6 @@ export class ProductsComponent {
   // select new image
   selectFile1(event: any): void {
     this.selectedFiles = event.target.files;
-  }
-
-  // upload new image
-  uploadImage() {
-    const file: File | null = this.selectedFiles.item(0);
-    if (file) {
-      this.currentFile = file;
-      this.service.postImages(this.currentFile).subscribe(
-        (response: any) => {
-          this.addImageForm.reset();
-          this.getImages();
-        },
-        (error: Response) => {
-          console.log(error);
-        }
-      );
-    } else {
-      console.log('no file selected');
-    }
   }
 
   @ViewChild(MatSort)
@@ -99,16 +82,11 @@ export class ProductsComponent {
 
   // delete image
   deleteImage(id: any) {
-    this.confirmService
-      .confirm('Are you sure..', 'You want to delete ?', '')
-      .then(() => {
-        this.service.deleteImage(id).subscribe(() => {
-          this.getImages();
-        });
-      })
-      .catch(() => {
-        console.log('user cancelled dialog');
-      });
+    var NAME: string = '';
+    this.service.getImageByID(id).subscribe((res: any) => {
+      NAME = res.name;
+      this.OpenDeleteDialog(id, NAME);
+    });
   }
 
   // byte[] to image conversion
@@ -123,5 +101,45 @@ export class ProductsComponent {
   // filter function
   applyFilter() {
     this.dataSource.filter = this.search.trim().toLowerCase();
+  }
+
+  OpenDeleteDialog(id: number, NAME: string) {
+    Swal.fire({
+      title: 'Are you sure ?',
+      html: `You want to <b style="color:red">delete</b> <b style="color:blue">${NAME}</b> with ID <b style="color:blue">#${id}</b>`,
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.service.deleteImage(id).subscribe(
+          (res) => {
+            this.getImages();
+            Swal.fire(
+              'Deleted successfully',
+              `Product <b style="color:blue">${NAME}</b> with ID <b style="color:blue">#${id}</b> data is deleted`,
+              'success'
+            );
+          },
+          (error) => {
+            console.log('Error: ', error.message);
+            Swal.fire('Access denied', 'No rights to delete', 'error');
+          }
+        );
+      }
+    });
+  }
+
+  // add product
+  addProduct() {
+    this.add_service
+      .confirm()
+      .then(() => {
+        this.getImages();
+      })
+      .catch(() => {
+        console.log('user cancelled dialog');
+      });
   }
 }

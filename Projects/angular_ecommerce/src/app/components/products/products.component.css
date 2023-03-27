@@ -1,8 +1,33 @@
-.products .add-image input,
-#search {
+.products .add-image input {
   width: 30%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.products #heading {
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 58, 58);
+}
+
+.products #search {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgb(172, 172, 172);
+  padding: 3px;
+  padding-left: 10px;
+}
+
+.products #search:focus {
+  outline: none;
+  border-bottom: 2px solid rgb(255, 87, 87);
+  transition: 300ms;
+}
+
+.products #search:hover {
+  outline: none;
+  border-bottom: 2px solid rgb(255, 87, 87);
+  transition: 300ms;
+  transform: scale(1.05);
 }
 
 .products .edit-btn {

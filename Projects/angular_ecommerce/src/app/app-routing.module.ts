@@ -8,13 +8,14 @@ import { LoginComponent } from './components/login/login.component';
 import { MyaccountComponent } from './components/myaccount/myaccount.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { StoreComponent } from './components/store/store.component';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'contactus', component: ContactUsComponent },
-  // { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'cart', component: CartComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'myaccount', component: MyaccountComponent },
+  { path: 'store', component: StoreComponent },
 ];
 
 @NgModule({

@@ -19,7 +19,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UsersService } from './services/users/users.service';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -33,6 +32,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { UsersEditComponent } from './components/users-edit/users-edit.component';
 import { UsersAddComponent } from './components/users-add/users-add.component';
 import { ProductsEditComponent } from './components/products-edit/products-edit.component';
+import { ProductsAddComponent } from './components/products-add/products-add.component';
+import { StoreComponent } from './components/store/store.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +56,10 @@ import { ProductsEditComponent } from './components/products-edit/products-edit.
     UsersEditComponent,
     UsersAddComponent,
     ProductsEditComponent,
+    ProductsAddComponent,
+    StoreComponent,
   ],
   imports: [
-    SweetAlert2Module,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -1,0 +1,6 @@
+.store .section1 {
+  background-image: url("../../../assets/images/store1.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}

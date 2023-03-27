@@ -1,0 +1,33 @@
+<div class="edit-overlay">
+
+    <div class="modal-header">
+        <div class="modal-title text-center h3">Add user</div>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addImageForm" id="add-product-form" class="form-inline">
+
+            <!-- product -->
+            <div class="mt-3">
+                <label class="h6">Product</label>
+                <input type="file" id="product" class="form-control" placeholder="Product image"
+                    formControlName="product" (change)="selectFile($event)">
+
+                <div class="text-center" *ngIf="addImageForm.get('product')?.invalid && 
+                                    addImageForm.get('product')?.errors && 
+                                    (addImageForm.get('product')?.dirty || addImageForm.get('product')?.touched)">
+                    <small class="text-danger" *ngIf="addImageForm.get('product')?.hasError('required')">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="decline()">{{ btnCancelText }}</button>
+        <button type="button" [disabled]="!addImageForm.valid" class="btn btn-primary" (click)="accept(addImageForm)">{{
+            btnOkText }}</button>
+    </div>
+
+</div>

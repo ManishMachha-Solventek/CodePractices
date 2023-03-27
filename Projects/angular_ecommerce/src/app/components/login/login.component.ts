@@ -51,7 +51,7 @@ export class LoginComponent {
                 sessionStorage.setItem('password', form.value.password);
                 sessionStorage.setItem('role', res.data[0].role);
                 this.userRole = sessionStorage.getItem('role');
-                window.location.replace('/cart');
+                window.location.replace('/store');
                 this.ngOnInit();
               }
             });

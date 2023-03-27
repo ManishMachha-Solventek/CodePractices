@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-html,
+/* html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+} */
 
 .products .mat-sort-header-container {
   justify-content: center;
@@ -31,6 +31,28 @@ body {
 .users .mat-sort-header-stem,
 .users .mat-sort-header-indicator {
   color: white;
+}
+
+.users footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  background-color: white;
+  box-shadow: 0px -1px 5px lightgray;
+  width: 100%;
+}
+
+.cart footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  background-color: white;
+  box-shadow: 0px -1px 5px lightgray;
+  width: 100%;
 }
 
 .products .mat-sort-header-stem,
