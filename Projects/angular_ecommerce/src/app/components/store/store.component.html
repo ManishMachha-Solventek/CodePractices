@@ -7,20 +7,38 @@
     </div>
 </div>
 
-<mat-list>
-    <div mat-subheader>Products</div>
+<mat-list class="mt-5">
 
     <mat-list-item *ngFor="let product of products" class="mb-4">
 
-        <div class="row">
+        <div class="row" (click)="goToProduct(product.id)">
+
             <div class="col-3">
-                <img src='{{product.image}}' class="img-fluid mx-auto d-block" [height]="200" style="vertical-align: middle;">
+                <img src='{{product.image}}' class="img-fluid mx-auto d-block" [height]="160" [width]="160">
             </div>
+
             <div class="col-6">
-                <div matListItemTitle>{{product.name}}</div>
+                <div matListItemTitle>
+                    <h1>{{product.name}}</h1>
+                    <h2>About product</h2>
+                    <ul>
+                        <li>It is yellow in colour and very sweet.</li>
+                        <li>It is rich in various vitamins, minerals, and other ingredients.</li>
+                        <li>Bananas give you instant energy.</li>
+                    </ul>
+                </div>
                 <div matListItemLine>{{product.info}}</div>
             </div>
+
+            <div class="col">
+                <h1><b>50/-</b></h1>
+
+                <button class="btn btn-success mt-5">Buy</button>
+            </div>
+
         </div>
 
     </mat-list-item>
 </mat-list>
+
+<app-footer></app-footer>

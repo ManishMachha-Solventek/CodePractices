@@ -2,18 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-/* html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-} */
-
-.products .mat-sort-header-container {
-  justify-content: center;
-}
+/* -----------------------------USERS----------------------------- */
 
 .users .mat-sort-header-container {
   justify-content: center;
@@ -44,6 +33,12 @@ body {
   width: 100%;
 }
 
+.users tbody tr {
+  border-bottom: 1px solid rgb(255, 199, 199);
+}
+
+/* -----------------------------CART----------------------------- */
+
 .cart footer {
   position: fixed;
   bottom: 0;
@@ -55,18 +50,21 @@ body {
   width: 100%;
 }
 
+/* -----------------------------PRODUCTS----------------------------- */
+
 .products .mat-sort-header-stem,
 .products .mat-sort-header-indicator {
   color: white;
+}
+
+.products .mat-sort-header-container {
+  justify-content: center;
 }
 
 .products tbody tr {
   border-bottom: 1px solid rgb(255, 199, 199) !important;
 }
 
-.users tbody tr {
-  border-bottom: 1px solid rgb(255, 199, 199);
-}
 
 .products thead tr th:hover {
   background-color: rgb(163, 26, 26) !important;
@@ -76,6 +74,8 @@ body {
   border-radius: 5px;
   transition: 300ms;
 }
+
+/* -----------------------------STORE----------------------------- */
 
 .store
   .ng-image-slider
@@ -104,6 +104,87 @@ mat-list-item {
 
 .mdc-list-item.mdc-list-item--with-three-lines {
   height: 200px !important;
-  box-shadow: 0px 0px 5px pink;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.mdc-list-item--with-three-lines .mdc-list-item__primary-text {
+  margin-top: -45px !important;
+}
+
+/* -----------------------------SINGLE PRODUCT----------------------------- */
+
+.single-product .mdc-list-item.mdc-list-item--with-three-lines {
+  box-shadow: 0px 0px 15px rgb(213, 213, 213) !important;
   border-radius: 20px;
+}
+
+.single-product .img-col {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.single-product .desc-col {
+  margin-left: 100px;
+}
+
+.single-product .section-3 {
+  background-color: #eee;
+  padding: 20px;
+}
+
+.single-product .section-3 button {
+  box-shadow: 0px 0px 5px rgb(134, 191, 134);
+}
+
+.single-product .section-3 mat-list-item {
+  height: fit-content;
+  width: fit-content;
+}
+
+.single-product .section-3 .card {
+  border: none;
+  box-shadow: 0px 0px 15px rgb(193, 193, 193) !important;
+}
+
+/* -----------------------------MY ACCOUNT----------------------------- */
+
+.my-account {
+  height: 100vh;
+}
+
+.my-account .container {
+  transform: scale(1.25);
+  margin-top: 20vh !important;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 5px rgb(255, 161, 247);
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.my-account footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.my-account .right-col div {
+  width: fit-content;
+  margin-left: 15%;
+}
+
+.my-account #sessionBAD {
+  box-shadow: unset;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  transform: unset;
+  margin-top: unset;
+  height: 10;
+}
+
+.my-account #sessionBAD .row .col1 {
+  padding-top: 21%;
 }

@@ -8,13 +8,13 @@
   display: block !important;
 }
 
-.edit-overlay label {
-  margin-left: 5px;
-}
-
 .edit-overlay .modal-title {
   font-family: "Poppins", sans-serif;
   color: blue;
+}
+
+.edit-overlay label {
+  margin-left: 5px;
 }
 
 .edit-overlay input:hover {

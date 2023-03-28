@@ -1,0 +1,8 @@
+.edit-overlay .modal-header {
+  display: block !important;
+}
+
+.edit-overlay .modal-title {
+  font-family: "Poppins", sans-serif;
+  color: blue;
+}

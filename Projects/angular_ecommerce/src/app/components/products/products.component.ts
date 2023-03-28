@@ -91,7 +91,7 @@ export class ProductsComponent {
   // delete image
   deleteImage(id: any) {
     var NAME: string = '';
-    this.service.getImageByID(id).subscribe((res: any) => {
+    this.service.getProductByID(id).subscribe((res: any) => {
       NAME = res.name;
       this.OpenDeleteDialog(id, NAME);
     });

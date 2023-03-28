@@ -44,7 +44,7 @@ export class LoginComponent {
                 sessionStorage.setItem('password', form.value.password);
                 sessionStorage.setItem('role', res.data[0].role);
                 this.userRole = sessionStorage.getItem('role');
-                window.location.replace('');
+                window.location.replace('/products');
               } else {
                 sessionStorage.setItem('session', res.data[0].username);
                 sessionStorage.setItem('username', res.data[0].username);

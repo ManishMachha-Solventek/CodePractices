@@ -38,6 +38,7 @@ import { StoreComponent } from './components/store/store.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatIconModule } from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
+import { SingleProductComponent } from './components/single-product/single-product.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {MatListModule} from '@angular/material/list';
     ProductsEditComponent,
     ProductsAddComponent,
     StoreComponent,
+    SingleProductComponent,
   ],
   imports: [
     NgImageSliderModule,

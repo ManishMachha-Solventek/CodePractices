@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ecommerce.foodcart_backend.entity.products;
+import com.ecommerce.foodcart_backend.repo.productsRepo;
 import com.ecommerce.foodcart_backend.service.ProductService;
 
 @RestController
@@ -30,10 +31,19 @@ public class productsController {
     @Autowired
     private ProductService service;
 
+    @Autowired
+    private productsRepo repo;
+
     // get images
     @GetMapping("")
     public List<products> getImages() {
         return service.getImages();
+    }
+
+    // get active products
+    @GetMapping("active")
+    public List<products> getActiveProducts() {
+        return repo.getActiveProducts();
     }
 
     // get image by ID

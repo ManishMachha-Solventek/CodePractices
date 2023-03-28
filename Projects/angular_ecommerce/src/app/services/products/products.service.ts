@@ -22,7 +22,11 @@ export class ProductsService {
     return this.http.get(this.baseURL);
   }
 
-  getImageByID(id: any) {
+  getActiveProducts() {
+    return this.http.get(`${this.baseURL}/active`);
+  }
+
+  getProductByID(id: any) {
     return this.http.get(`${this.baseURL}/${id}`);
   }
 

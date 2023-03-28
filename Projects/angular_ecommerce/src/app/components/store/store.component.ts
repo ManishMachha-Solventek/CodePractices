@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products/products.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class StoreComponent {
 
   products: any;
 
-  constructor(private service: ProductsService) {}
+  constructor(private service: ProductsService, private router: Router) {}
 
   // byte[] to image conversion
   convertImage(data: any) {
@@ -31,9 +32,14 @@ export class StoreComponent {
 
   // get all images
   getProducts() {
-    this.service.getImages().subscribe((data: any) => {
+    this.service.getActiveProducts().subscribe((data: any) => {
       this.products = data.map(this.convertImage);
     });
+  }
+
+  goToProduct(id: any) {
+    localStorage.setItem('currentProductID', id);
+    this.router.navigate([`/current_product`]);
   }
 
   ngOnInit() {

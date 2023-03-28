@@ -1,7 +1,7 @@
 <div class="edit-overlay">
 
     <div class="modal-header">
-        <div class="modal-title text-center h3">update image</div>
+        <div class="modal-title text-center h3">update product</div>
     </div>
     <div class="modal-body">
         <form [formGroup]="imageForm">
@@ -9,8 +9,8 @@
             <!-- product -->
             <div class="mt-3">
                 <label class="h6">Product</label>
-                <input type="file" id="image" class="form-control" placeholder="Product image"
-                    formControlName="image" (change)="selectFile($event)">
+                <input type="file" id="image" class="form-control" placeholder="Product image" formControlName="image"
+                    (change)="selectFile($event)">
 
                 <div class="text-center" *ngIf="imageForm.get('product')?.invalid && 
                                     imageForm.get('product')?.errors && 

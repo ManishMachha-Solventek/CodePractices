@@ -75,7 +75,7 @@ export class ProductsEditComponent {
   }
 
   getImagedata(id: any) {
-    this.service.getImageByID(id).subscribe((res: any) => {
+    this.service.getProductByID(id).subscribe((res: any) => {
       this.updateID = res.id;
       this,
         this.imageForm.setValue({
