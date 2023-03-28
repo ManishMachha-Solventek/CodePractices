@@ -31,6 +31,9 @@ export class ProductsAddComponent {
   // add image form
   addImageForm: FormGroup = this.fb.group({
     product: ['', [Validators.required]],
+    name: ['', [Validators.required]],
+    info: ['', [Validators.required]],
+    active: ['', [Validators.required]],
   });
 
   public decline() {
@@ -45,16 +48,23 @@ export class ProductsAddComponent {
     const file: File | null = this.selectedFiles.item(0);
     if (file) {
       this.currentFile = file;
-      this.product.postImages(this.currentFile).subscribe(
-        (response: any) => {
-          form.reset();
-          this.activeModal.close(true);
-          Swal.fire('Product added successfully', '', 'success');
-        },
-        (error: Response) => {
-          console.log(error);
-        }
-      );
+      this.product
+        .postImages(
+          this.currentFile,
+          form.value.name,
+          form.value.info,
+          form.value.active
+        )
+        .subscribe(
+          (response: any) => {
+            form.reset();
+            this.activeModal.close(true);
+            Swal.fire('Product added successfully', '', 'success');
+          },
+          (error: Response) => {
+            console.log(error);
+          }
+        );
     } else {
       console.log('no file selected');
     }

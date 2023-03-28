@@ -1,11 +1,70 @@
 <div class="edit-overlay">
 
     <div class="modal-header">
-        <div class="modal-title text-center h3">update Image</div>
+        <div class="modal-title text-center h3">update image</div>
     </div>
     <div class="modal-body">
         <form [formGroup]="imageForm">
-            <input class="form-control mt-5" formControlName="image" type="file" (change)="selectFile($event)">
+
+            <!-- product -->
+            <div class="mt-3">
+                <label class="h6">Product</label>
+                <input type="file" id="image" class="form-control" placeholder="Product image"
+                    formControlName="image" (change)="selectFile($event)">
+
+                <div class="text-center" *ngIf="imageForm.get('product')?.invalid && 
+                                    imageForm.get('product')?.errors && 
+                                    (imageForm.get('product')?.dirty || imageForm.get('product')?.touched)">
+                    <small class="text-danger" *ngIf="imageForm.get('product')?.hasError('required')">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- name -->
+            <div class="mt-3">
+                <label class="h6">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Product name" formControlName="name">
+
+                <div class="text-center" *ngIf="imageForm.get('name')?.invalid && 
+                                    imageForm.get('name')?.errors && 
+                                    (imageForm.get('name')?.dirty || imageForm.get('name')?.touched)">
+                    <small class="text-danger" *ngIf="imageForm.get('name')?.hasError('required')">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- active -->
+            <div class="mt-3">
+                <label class="h6">Active</label>
+                <select name="active" id="active" class="form-select" formControlName="active">
+                    <option value="">- select -</option>
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select>
+
+                <div class="text-center" *ngIf="imageForm.get('active')?.invalid && 
+                                    imageForm.get('active')?.errors && 
+                                    (imageForm.get('active')?.dirty || imageForm.get('active')?.touched)">
+                    <small class="text-danger" *ngIf="imageForm.get('active')?.hasError('required')">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- info -->
+            <div class="mt-3">
+                <label class="h6">Info</label>
+                <input id="info" class="form-control" placeholder="Product info" formControlName="info">
+                <div class="text-center" *ngIf="imageForm.get('info')?.invalid && 
+                                    imageForm.get('info')?.errors && 
+                                    (imageForm.get('info')?.dirty || imageForm.get('info')?.touched)">
+                    <small class="text-danger" *ngIf="imageForm.get('info')?.hasError('required')">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
         </form>
     </div>
 

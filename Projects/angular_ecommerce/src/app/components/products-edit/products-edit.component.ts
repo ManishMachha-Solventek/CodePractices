@@ -28,6 +28,9 @@ export class ProductsEditComponent {
 
   imageForm: FormGroup = this.fb.group({
     image: ['', [Validators.required]],
+    name: ['', [Validators.required]],
+    info: ['', [Validators.required]],
+    active: ['', [Validators.required]],
   });
 
   selectFile(event: any): void {
@@ -42,18 +45,26 @@ export class ProductsEditComponent {
     const file: File | null = this.selectedFiles.item(0);
     if (file) {
       this.currentFile = file;
-      this.service.putImages(ID, this.currentFile).subscribe(
-        (response: any) => {
-          console.log(response);
-          if (response.status == 200) {
-            this.imageForm.reset();
-            this.activeModal.close(true);
+      this.service
+        .putImages(
+          ID,
+          this.currentFile,
+          this.imageForm.value.name,
+          this.imageForm.value.info,
+          this.imageForm.value.active
+        )
+        .subscribe(
+          (response: any) => {
+            console.log(response);
+            if (response.status == 200) {
+              this.imageForm.reset();
+              this.activeModal.close(true);
+            }
+          },
+          (error: Response) => {
+            console.log(error);
           }
-        },
-        (error: Response) => {
-          console.log(error);
-        }
-      );
+        );
     } else {
       console.log('no file selected');
     }
@@ -66,6 +77,13 @@ export class ProductsEditComponent {
   getImagedata(id: any) {
     this.service.getImageByID(id).subscribe((res: any) => {
       this.updateID = res.id;
+      this,
+        this.imageForm.setValue({
+          image: '',
+          name: res.name,
+          info: res.info,
+          active: res.active,
+        });
     });
   }
 

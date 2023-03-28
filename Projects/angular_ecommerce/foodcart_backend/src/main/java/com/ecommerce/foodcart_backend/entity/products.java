@@ -19,6 +19,25 @@ public class products {
     @Basic(fetch = FetchType.LAZY)
     @Column(length = 1000000000)
     byte[] image;
+    String active;
+
+    public String getActive() {
+        return this.active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public String getInfo() {
+        return this.info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    String info;
 
     public products() {
     }

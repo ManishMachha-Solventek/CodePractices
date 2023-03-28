@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { MatMenuModule } from '@angular/material/menu';
 import { SignupComponent } from './components/signup/signup.component';
 import { AccountComponent } from './components/account/account.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,6 +35,9 @@ import { UsersAddComponent } from './components/users-add/users-add.component';
 import { ProductsEditComponent } from './components/products-edit/products-edit.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { StoreComponent } from './components/store/store.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { MatIconModule } from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -60,6 +64,7 @@ import { StoreComponent } from './components/store/store.component';
     StoreComponent,
   ],
   imports: [
+    NgImageSliderModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -72,6 +77,9 @@ import { StoreComponent } from './components/store/store.component';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [UsersService, MatSnackBar],
   bootstrap: [AppComponent],

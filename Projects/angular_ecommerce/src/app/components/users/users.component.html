@@ -79,7 +79,7 @@
                         Edit
                     </th>
                     <td mat-cell *matCellDef="let user"> <button (click)="editUser(user.id)" class="edit-btn"
-                            placement="right" ngbTooltip="Edit user {{user.id}}">Edit</button> </td>
+                            placement="right" ngbTooltip="Edit user {{user.id}}"><mat-icon>edit</mat-icon></button> </td>
                 </ng-container>
 
                 <!-- delete Column -->
@@ -88,7 +88,7 @@
                         Delete
                     </th>
                     <td mat-cell *matCellDef="let user"> <button (click)="deleteUser(user.id)" class="delete-btn"
-                            placement="left" ngbTooltip="Delete user {{user.id}}">Delete</button> </td>
+                            placement="left" ngbTooltip="Delete user {{user.id}}"><mat-icon>delete</mat-icon></button> </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

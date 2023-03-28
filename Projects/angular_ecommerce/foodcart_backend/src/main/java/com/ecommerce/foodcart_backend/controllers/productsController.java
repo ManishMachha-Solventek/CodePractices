@@ -51,7 +51,8 @@ public class productsController {
     // update image
     @PutMapping("{id}")
     public ResponseEntity<?> updateImageByID(@PathVariable int id,
-            @RequestParam("image") MultipartFile file) throws IOException {
+            @RequestParam("image") MultipartFile file, @RequestParam Map<String, String> pathvarsMap)
+            throws IOException {
 
         MultipartFile File = file;
         Map<String, Object> map = new LinkedHashMap<String, Object>();
@@ -60,7 +61,9 @@ public class productsController {
             if (File.getSize() / 1000 <= 1024) {
                 products image = service.getImageById(id);
                 image.setId(id);
-                image.setName(File.getOriginalFilename());
+                image.setName(pathvarsMap.get("name"));
+                image.setActive(pathvarsMap.get("active"));
+                image.setInfo(pathvarsMap.get("info"));
                 image.setImage(File.getBytes());
                 service.updateImage(image);
                 map.put("status", 200);
@@ -85,14 +88,17 @@ public class productsController {
 
     // post image
     @PostMapping("")
-    public ResponseEntity<?> saveImage(@RequestParam("image") MultipartFile file) throws IOException {
+    public ResponseEntity<?> saveImage(@RequestParam("image") MultipartFile file,
+            @RequestParam Map<String, String> pathvarsMap) throws IOException {
         MultipartFile File = file;
         products Image = new products(File.getOriginalFilename(), File.getBytes());
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         try {
             if (File.getSize() / 1000 <= 1024) {
                 Image.setImage(File.getBytes());
-                Image.setName(File.getOriginalFilename());
+                Image.setName(pathvarsMap.get("name"));
+                Image.setActive(pathvarsMap.get("active"));
+                Image.setInfo(pathvarsMap.get("info"));
                 service.uploadImage(Image);
                 map.put("status", 200);
                 map.put("message", "image uploaded Successfully!");

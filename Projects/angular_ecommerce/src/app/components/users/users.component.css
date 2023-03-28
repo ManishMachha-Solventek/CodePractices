@@ -44,16 +44,8 @@
   text-align: center;
 }
 
-.users tbody {
-  text-align: center;
-}
-
 .users td {
-  text-align: center;
-}
-
-.users .mat-sort-header-container {
-  justify-content: center;
+  /* text-align: center; */
 }
 
 .users thead th:first-child {
@@ -73,10 +65,6 @@
 
 .users tbody tr:last-child td:last-child {
   border-bottom: none;
-}
-
-.users tbody tr:last-child {
-  border-bottom: 1px solid rgb(255, 199, 199);
 }
 
 .users thead tr th:hover {
@@ -119,29 +107,23 @@
 
 .users .edit-btn {
   border: none;
-  background-color: green;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 12px;
+  color: green;
+  background-color: white;
 }
 
 .users .edit-btn:hover {
-  box-shadow: 0px 0px 5px rgb(0, 75, 0);
+  text-shadow: 0px 0px 10px green;
   transition: 300ms;
 }
 
 .users .delete-btn {
   border: none;
-  background-color: red;
-  color: white;
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 12px;
+  color: red;
+  background-color: white;
 }
 
 .users .delete-btn:hover {
-  box-shadow: 0px 0px 5px rgb(151, 0, 0);
+  text-shadow: 0px 0px 10px red;
   transition: 300ms;
 }
 

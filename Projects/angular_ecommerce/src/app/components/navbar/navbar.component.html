@@ -21,6 +21,9 @@
                     <li li routerLinkActive="active" class="nav-item" *ngIf="session!=null">
                         <a class="nav-link" routerLink="cart" (click)="collapsed=!collapsed">Cart</a>
                     </li>
+                    <li li routerLinkActive="active" class="nav-item" *ngIf="session!=null">
+                        <a class="nav-link" routerLink="store" (click)="collapsed=!collapsed">Store</a>
+                    </li>
                     <li routerLinkActive="active" class="nav-item" *ngIf="session==null">
                         <a class="nav-link" routerLink="contactus" (click)="collapsed=!collapsed">Contact us</a>
                     </li>

@@ -26,7 +26,15 @@ export class ProductsComponent {
 
   dataSource: MatTableDataSource<any>;
 
-  displayedColumns: string[] = ['id', 'name', 'image', 'edit', 'delete'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'image',
+    'info',
+    'active',
+    'edit',
+    'delete',
+  ];
 
   // constructor
   constructor(
@@ -95,6 +103,8 @@ export class ProductsComponent {
       id: data.id,
       name: data.name,
       image: 'data:image/jpg;base64,' + data.image,
+      info: data.info,
+      active: data.active,
     };
   }
 

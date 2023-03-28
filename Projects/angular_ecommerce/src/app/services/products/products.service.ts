@@ -26,15 +26,21 @@ export class ProductsService {
     return this.http.get(`${this.baseURL}/${id}`);
   }
 
-  postImages(image: File) {
+  postImages(image: File, name: string, info: string, active: string) {
     const data: FormData = new FormData();
     data.append('image', image);
+    data.append('name', name);
+    data.append('info', info);
+    data.append('active', active);
     return this.http.post(this.baseURL, data);
   }
 
-  putImages(id: any, image: File) {
+  putImages(id: any, image: File, name: string, info: string, active: string) {
     const data: FormData = new FormData();
     data.append('image', image);
+    data.append('name', name);
+    data.append('info', info);
+    data.append('active', active);
     return this.http.put(`${this.baseURL}/${id}`, data);
   }
 
