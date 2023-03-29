@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductsService } from 'src/app/services/products/products.service';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-single-product',
@@ -9,15 +11,22 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class SingleProductComponent {
   product: any;
-  ID: any;
+  product_ID: any;
+  user_ID: any;
   currentProduct: any;
   products: any;
+  quantity: number = 0;
 
-  constructor(private service: ProductsService, private router: Router) {}
+  constructor(
+    private service: ProductsService,
+    private router: Router,
+    private cart_service: CartService,
+    private user_service: UsersService
+  ) {}
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.ID = localStorage.getItem('currentProductID');
+    this.product_ID = localStorage.getItem('currentProductID');
     this.getProduct();
     this.getProducts();
   }
@@ -35,7 +44,7 @@ export class SingleProductComponent {
 
   // get product
   getProduct() {
-    this.service.getProductByID(this.ID).subscribe((data: any) => {
+    this.service.getProductByID(this.product_ID).subscribe((data: any) => {
       const _product = [data];
       this.product = _product.map(this.convertImage);
     });
@@ -59,5 +68,52 @@ export class SingleProductComponent {
     localStorage.setItem('currentProductID', id);
     this.router.navigate([`/current_product`]);
     this.ngOnInit();
+  }
+
+  addToCart() {
+    let uname = sessionStorage.getItem('username');
+    this.user_service.getUserByUsername(uname).subscribe((res: any) => {
+      console.log(res);
+      this.user_ID = res.data[0].id;
+      let cartItem = { product_id: this.product_ID, user_id: this.user_ID };
+      this.cart_service.addItemToCart(cartItem).subscribe((res: any) => {
+        if (res.status == 201) {
+          this.quantity = 1;
+          console.log('added to cart');
+        } else {
+          console.log('not added');
+        }
+      });
+    });
+  }
+
+  increase_quantity() {
+    if (this.quantity >= 0) {
+      this.cart_service
+        .increaseItemQuantity(this.user_ID, this.product_ID)
+        .subscribe((res: any) => {
+          if (res.status == 201) {
+            this.quantity++;
+            console.log('quantity increased');
+          } else {
+            console.log('not increased');
+          }
+        });
+    }
+  }
+
+  decrease_quantity() {
+    if (this.quantity > 0) {
+      this.cart_service
+        .decreaseItemQuantity(this.user_ID, this.product_ID)
+        .subscribe((res: any) => {
+          if (res.status == 201) {
+            this.quantity--;
+            console.log('quantity decreased');
+          } else {
+            console.log('not decreased');
+          }
+        });
+    }
   }
 }

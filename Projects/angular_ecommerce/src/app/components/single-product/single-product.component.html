@@ -23,8 +23,18 @@
                             <h1>50/-</h1>
                         </div>
 
-                        <button class="btn btn-primary mt-3 d-flex">Add
+                        <button *ngIf="quantity==0" class="btn btn-primary mt-3 d-flex"
+                            (click)="addToCart()">Add
                             &nbsp;<mat-icon>shopping_cart</mat-icon></button>
+
+                        <div class="d-flex align-items-center" *ngIf="quantity>0">
+                            <button class="btn text-primary mt-3 d-flex" (click)="increase_quantity()">
+                                &nbsp;<mat-icon>add_circle</mat-icon></button>
+                            <b class="text-primary h5 mt-4">{{quantity}}</b>
+                            <button class="btn text-primary mt-3 d-flex" (click)="decrease_quantity()">
+                                &nbsp;<mat-icon>remove_circle</mat-icon></button>
+                        </div>
+
                     </div>
 
                     <hr>

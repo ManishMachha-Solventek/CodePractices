@@ -1,4 +1,4 @@
-package com.ecommerce.foodcart_backend.service;
+package com.ecommerce.foodcart_backend.service_Impl.products;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ecommerce.foodcart_backend.entity.products;
 import com.ecommerce.foodcart_backend.repo.productsRepo;
+import com.ecommerce.foodcart_backend.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {

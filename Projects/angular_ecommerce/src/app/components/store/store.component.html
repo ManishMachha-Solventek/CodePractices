@@ -1,54 +1,62 @@
 <div class="store">
     <div class="container">
+
+        <!-- section 1 -->
         <div class="section1 mt-5">
             <ng-image-slider [images]="imageObject" [infinite]="true" [autoSlide]="0"
                 [imageSize]="{width: 400, height: 250}" slideImage="1"></ng-image-slider>
         </div>
+
+        <!-- section 2 -->
+        <div class="section-2">
+            <mat-list class="mt-5 d-flex flex-column">
+
+                <mat-list-item *ngFor="let product of products" class="mb-4">
+
+                    <div class="card products-list-mobile">
+                        <img src='{{product.image}}' class="img-fluid mx-auto d-block" [height]="100" [width]="100">
+                        <div class="card-body">
+                            <b>{{product.name}}</b>
+                            <div class="d-flex price-buy">
+                                <b>50/-</b>
+                                <button class="btn btn-outline-success btn-sm"
+                                    (click)="goToProduct(product.id)">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row products-list" (click)="goToProduct(product.id)">
+
+                        <div class="col-3">
+                            <img src='{{product.image}}' class="img-fluid mx-auto d-block" [height]="160" [width]="160">
+                        </div>
+
+                        <div class="col-6">
+                            <div matListItemTitle>
+                                <h1>{{product.name}}</h1>
+                                <h2>About product</h2>
+                                <ul>
+                                    <li>It is yellow in colour and very sweet.</li>
+                                    <li>It is rich in various vitamins, minerals, and other ingredients.</li>
+                                    <li>Bananas give you instant energy.</li>
+                                </ul>
+                            </div>
+                            <div matListItemLine>{{product.info}}</div>
+                        </div>
+
+                        <div class="col">
+                            <h1><b>50/-</b></h1>
+                            <button class="btn btn-success mt-5">Buy</button>
+                        </div>
+
+                    </div>
+
+                </mat-list-item>
+            </mat-list>
+        </div>
     </div>
 </div>
 
-<mat-list class="mt-5">
 
-    <mat-list-item *ngFor="let product of products" class="mb-4">
-
-        <div class="card products-list-mobile">
-            <img src='{{product.image}}' class="img-fluid mx-auto d-block" [height]="100" [width]="100">
-            <div class="card-body">
-                <b>{{product.name}}</b>
-                <div class="d-flex price-buy">
-                    <b>50/-</b>
-                    <button class="btn btn-outline-success btn-sm" (click)="goToProduct(product.id)">Buy</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="row products-list" (click)="goToProduct(product.id)">
-
-            <div class="col-3">
-                <img src='{{product.image}}' class="img-fluid mx-auto d-block" [height]="160" [width]="160">
-            </div>
-
-            <div class="col-6">
-                <div matListItemTitle>
-                    <h1>{{product.name}}</h1>
-                    <h2>About product</h2>
-                    <ul>
-                        <li>It is yellow in colour and very sweet.</li>
-                        <li>It is rich in various vitamins, minerals, and other ingredients.</li>
-                        <li>Bananas give you instant energy.</li>
-                    </ul>
-                </div>
-                <div matListItemLine>{{product.info}}</div>
-            </div>
-
-            <div class="col">
-                <h1><b>50/-</b></h1>
-                <button class="btn btn-success mt-5">Buy</button>
-            </div>
-
-        </div>
-
-    </mat-list-item>
-</mat-list>
 
 <app-footer></app-footer>

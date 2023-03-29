@@ -11,7 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import com.ecommerce.foodcart_backend.service_Impl.users.MyUserDetailsService;
+
+import com.ecommerce.foodcart_backend.service_Impl.security_users.MyUserDetailsService;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
@@ -26,15 +28,11 @@ public class SecurityConfig {
         return http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/users/send/**", "/products/**")
+                .requestMatchers("/users/send/**", "/products/**", "/users/save")
                 .permitAll()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/users/save")
-                .permitAll()
-                .and()
-                .authorizeHttpRequests()
-                .requestMatchers("/users/**")
+                .requestMatchers("/users/**", "cart/**")
                 .authenticated()
                 .and()
                 .httpBasic()

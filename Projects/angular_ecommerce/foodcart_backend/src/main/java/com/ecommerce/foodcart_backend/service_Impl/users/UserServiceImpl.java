@@ -1,4 +1,4 @@
-package com.ecommerce.foodcart_backend.service;
+package com.ecommerce.foodcart_backend.service_Impl.users;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ecommerce.foodcart_backend.entity.Users;
 import com.ecommerce.foodcart_backend.repo.usersRepo;
+import com.ecommerce.foodcart_backend.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
