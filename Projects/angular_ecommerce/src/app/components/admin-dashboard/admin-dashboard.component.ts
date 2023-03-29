@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  btn1: boolean = false;
+  btn1: boolean = true;
 
   toggleBtn1() {
     setTimeout(() => {

@@ -65,7 +65,6 @@
   border-bottom: 1px solid rgb(255, 199, 199) !important;
 }
 
-
 .products thead tr th:hover {
   background-color: rgb(163, 26, 26) !important;
   color: white;
@@ -73,6 +72,16 @@
   transform: scale(1.1);
   border-radius: 5px;
   transition: 300ms;
+}
+
+@media (max-width: 450px) {
+  .products #products-table {
+    width: 90% !important;
+  }
+
+  .products .paginator {
+    width: 90% !important;
+  }
 }
 
 /* -----------------------------STORE----------------------------- */
@@ -96,15 +105,33 @@
   filter: drop-shadow(0px 0px 5px gray);
 }
 
+@media (max-width: 450px) {
+  .products-list {
+    display: none !important;
+  }
+
+  .mdc-list-item.mdc-list-item--with-three-lines {
+    height: max-content !important;
+    border-bottom: unset !important;
+  }
+}
+
+@media (min-width: 450px) {
+  .products-list-mobile {
+    display: none !important;
+    box-shadow: 0px 0px 5px grey !important;
+  }
+
+  .mdc-list-item.mdc-list-item--with-three-lines {
+    height: 200px !important;
+    border-bottom: 1px solid rgb(235, 235, 235);
+  }
+}
+
 mat-list-item {
   margin-left: auto !important;
   margin-right: auto !important;
   width: 80% !important;
-}
-
-.mdc-list-item.mdc-list-item--with-three-lines {
-  height: 200px !important;
-  border-bottom: 1px solid rgb(235, 235, 235);
 }
 
 .mdc-list-item--with-three-lines .mdc-list-item__primary-text {
@@ -124,12 +151,50 @@ mat-list-item {
 }
 
 .single-product .desc-col {
-  margin-left: 100px;
+  margin-left: 50px;
+}
+
+@media (max-width: 450px) {
+  .single-product .section-1 .row {
+    flex-direction: column;
+  }
+
+  .single-product .section-1 .img-col {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80% !important;
+  }
+
+  .single-product .section-1 .desc-col {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  .single-product .section-1 .main-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .single-product .section-3 .d-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .single-product .section-3 .d-flex .card {
+    width: 100% !important;
+  }
 }
 
 .single-product .section-3 {
   background-color: #eee;
   padding: 20px;
+}
+
+.single-product .section-3 .price-buy {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .single-product .section-3 button {

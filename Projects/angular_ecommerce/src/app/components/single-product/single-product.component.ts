@@ -12,10 +12,11 @@ export class SingleProductComponent {
   ID: any;
   currentProduct: any;
   products: any;
-  
+
   constructor(private service: ProductsService, private router: Router) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.ID = localStorage.getItem('currentProductID');
     this.getProduct();
     this.getProducts();
@@ -37,7 +38,6 @@ export class SingleProductComponent {
     this.service.getProductByID(this.ID).subscribe((data: any) => {
       const _product = [data];
       this.product = _product.map(this.convertImage);
-      console.log(this.product);
     });
   }
 
@@ -53,5 +53,11 @@ export class SingleProductComponent {
     this.service.getActiveProducts().subscribe((data: any) => {
       this.products = data.map(this.convertImage);
     });
+  }
+
+  goToProduct(id: any) {
+    localStorage.setItem('currentProductID', id);
+    this.router.navigate([`/current_product`]);
+    this.ngOnInit();
   }
 }

@@ -13,6 +13,7 @@ export class AppComponent {
   isAdmin: boolean = false;
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     if (this.role) {
       if (this.role == 'ROLE_ADMIN') {
         this.isAdmin = true;
