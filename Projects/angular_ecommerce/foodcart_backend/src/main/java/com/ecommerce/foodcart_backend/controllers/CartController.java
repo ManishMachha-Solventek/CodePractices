@@ -93,7 +93,7 @@ public class CartController {
         int product_id = Integer.parseInt(pathVarsMap.get("product_id"));
         try {
             repo.removeFromCart(user_id, product_id);
-            map.put("status", 201);
+            map.put("status", 200);
             map.put("message", "item removed Successfully!");
             return new ResponseEntity<>(map, HttpStatus.CREATED);
         } catch (Exception e) {

@@ -156,7 +156,7 @@ export class SingleProductComponent {
               this.cart_service
                 .removeFromCart(this.user_ID, this.product_ID)
                 .subscribe((res: any) => {
-                  if (res.status == 201) {
+                  if (res.status == 200) {
                     this.quantity = 0;
                     console.log('item removed');
                   } else {
