@@ -37,6 +37,7 @@ public class productsController {
     // get images
     @GetMapping("")
     public List<products> getImages() {
+        System.out.println(service.getImages());
         return service.getImages();
     }
 

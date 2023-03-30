@@ -41,4 +41,25 @@ export class CartService {
       this.httpOptions
     );
   }
+
+  removeFromCart(user_id: any, product_id: any) {
+    return this.http.delete<Object[]>(
+      `${this.baseURL}/cart/remove/${user_id}/${product_id}`,
+      this.httpOptions
+    );
+  }
+
+  getAllCartItemsByUserIdProductId(user_id: any, product_id: any) {
+    return this.http.get<Object[]>(
+      `${this.baseURL}/cart/cart_items/${user_id}/${product_id}`,
+      this.httpOptions
+    );
+  }
+
+  getAllCartItemsByUserId(user_id: any) {
+    return this.http.get<Object[]>(
+      `${this.baseURL}/cart/cart_items/${user_id}`,
+      this.httpOptions
+    );
+  }
 }

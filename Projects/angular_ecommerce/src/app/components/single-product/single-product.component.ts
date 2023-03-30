@@ -29,6 +29,27 @@ export class SingleProductComponent {
     this.product_ID = localStorage.getItem('currentProductID');
     this.getProduct();
     this.getProducts();
+
+    let uname = sessionStorage.getItem('username');
+    this.user_service.getUserByUsername(uname).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.user_ID = res.data[0].id;
+
+        localStorage.setItem('currentProductID', this.product_ID);
+        this.router.navigate(['/current_product']);
+
+        this.cart_service
+          .getAllCartItemsByUserIdProductId(this.user_ID, this.product_ID)
+          .subscribe((res: any) => {
+            if (res.status == 200) {
+              this.quantity = res.data[0].quantity;
+              console.log('quantity set');
+            } else {
+              console.log('data not found');
+            }
+          });
+      }
+    });
   }
 
   // byte[] to image conversion
@@ -64,10 +85,30 @@ export class SingleProductComponent {
     });
   }
 
-  goToProduct(id: any) {
-    localStorage.setItem('currentProductID', id);
-    this.router.navigate([`/current_product`]);
-    this.ngOnInit();
+  goToProduct(product_id: any) {
+    this.quantity = 0;
+    let uname = sessionStorage.getItem('username');
+    this.user_service.getUserByUsername(uname).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.user_ID = res.data[0].id;
+
+        localStorage.setItem('currentProductID', product_id);
+        this.router.navigate(['/current_product']);
+
+        this.cart_service
+          .getAllCartItemsByUserIdProductId(this.user_ID, product_id)
+          .subscribe((res: any) => {
+            if (res.status == 200) {
+              this.quantity = res.data[0].quantity;
+              console.log('quantity set');
+            } else {
+              console.log('data not found');
+            }
+          });
+
+        this.ngOnInit();
+      }
+    });
   }
 
   addToCart() {
@@ -76,6 +117,8 @@ export class SingleProductComponent {
       console.log(res);
       this.user_ID = res.data[0].id;
       let cartItem = { product_id: this.product_ID, user_id: this.user_ID };
+      console.log(cartItem);
+
       this.cart_service.addItemToCart(cartItem).subscribe((res: any) => {
         if (res.status == 201) {
           this.quantity = 1;
@@ -109,6 +152,18 @@ export class SingleProductComponent {
         .subscribe((res: any) => {
           if (res.status == 201) {
             this.quantity--;
+            if (this.quantity == 0) {
+              this.cart_service
+                .removeFromCart(this.user_ID, this.product_ID)
+                .subscribe((res: any) => {
+                  if (res.status == 201) {
+                    this.quantity = 0;
+                    console.log('item removed');
+                  } else {
+                    console.log('not removed');
+                  }
+                });
+            }
             console.log('quantity decreased');
           } else {
             console.log('not decreased');
