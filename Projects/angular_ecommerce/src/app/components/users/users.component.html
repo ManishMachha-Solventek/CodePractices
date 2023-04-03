@@ -8,7 +8,7 @@
 
         <div class="text-center container mt-3">
             <input id="search" matInput [(ngModel)]="search" (keyup)="applyFilter()" placeholder="Filter">
-            <button (click)="AddUser()" *ngIf="userRole=='ROLE_ADMIN'" class="btn btn-outline-danger btn-sm"
+            <button (click)="AddUser()" *ngIf="userRole=='ROLE_ADMIN'" class="btn btn-outline-primary btn-sm"
                 style="margin-left: 10px;" placement="right" ngbTooltip="Add user">
                 <i class="bi bi-person-add"></i>
             </button>
