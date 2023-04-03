@@ -20,6 +20,16 @@ public class products {
     @Column(length = 1000000000)
     byte[] image;
     String active;
+    int price;
+
+    public int getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
 
     public String getActive() {
         return this.active;

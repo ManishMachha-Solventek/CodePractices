@@ -10,7 +10,7 @@
   .login .form-label,
   #recovery-form-name {
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(to right, #cf23cf, #ff6b08);
+    background: linear-gradient(to right,#1c57c4, blue);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
@@ -59,19 +59,19 @@
     margin-right: auto;
     width: 95%;
     text-align: justify;
-    color: rgb(175, 0, 123);
+    color: blue;
     border-radius: 40px;
-    background-image: radial-gradient(rgb(255, 212, 219), white);
+    background-image: radial-gradient(#aecaff, white);
     padding: 40px;
-    box-shadow: 0px 0px 5px rgb(255, 210, 218);
+    box-shadow: 0px 0px 5px #aecaff;
     font-size: 15px;
   }
   
   .login .right button {
     border-radius: 20px;
     color: white;
-    box-shadow: 0px 0px 5px rgb(135, 0, 0);
-    background-color: rgb(255, 62, 62);
+    box-shadow: 0px 0px 5px rgb(40, 0, 135);
+    background-color: rgb(64, 64, 252);
     border: none;
   }
   
@@ -82,7 +82,7 @@
   
   .login .right .h1,
   .login .h6 {
-    background: linear-gradient(to right, #cf23cf, #ff6b08);
+    background: linear-gradient(to right, #1c57c4, blue);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-background-clip: text;

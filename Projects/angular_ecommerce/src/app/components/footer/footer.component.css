@@ -1,6 +1,6 @@
 footer a:hover,
 footer span:hover {
-  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, green);
+  background: linear-gradient(to right, blue,violet);
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -15,7 +15,7 @@ footer {
 
 footer .logo {
   font-family: "Dancing Script", cursive;
-  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, green);
+  background: linear-gradient(to right, blue,red);
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;

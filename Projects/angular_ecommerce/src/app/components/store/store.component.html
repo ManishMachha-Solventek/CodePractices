@@ -3,8 +3,8 @@
 
         <!-- section 1 -->
         <div class="section1 mt-5">
-            <ng-image-slider [images]="imageObject" [infinite]="true" [autoSlide]="1"
-                [imageSize]="{width: 400, height: 250}" slideImage="2"></ng-image-slider>
+            <ng-image-slider [images]="imageObject" [infinite]="true" [autoSlide]="0"
+                [imageSize]="{width: 400, height: 250}" slideImage="1"></ng-image-slider>
         </div>
 
         <!-- section 2 -->
@@ -19,7 +19,7 @@
                             <b>{{product.name}}</b><br>
                             <i>{{product.info}}</i>
                             <div class="d-flex price-buy">
-                                <b>50/-</b>
+                                <b>₹{{product.price}}</b>
                                 <button class="btn buy-btn btn-outline-success btn-sm"
                                     (click)="goToProduct(product.id)">Buy</button>
                             </div>
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col">
-                            <h1><b>50/-</b></h1>
+                            <h1><b>₹{{product.price}}</b></h1>
                             <button class="btn btn-success mt-5">Buy</button>
                         </div>
 

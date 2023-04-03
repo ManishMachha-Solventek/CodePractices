@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { UsersService } from 'src/app/services/users/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-single-product',
@@ -112,22 +113,26 @@ export class SingleProductComponent {
   }
 
   addToCart() {
-    let uname = sessionStorage.getItem('username');
-    this.user_service.getUserByUsername(uname).subscribe((res: any) => {
-      console.log(res);
-      this.user_ID = res.data[0].id;
-      let cartItem = { product_id: this.product_ID, user_id: this.user_ID };
-      console.log(cartItem);
+    if (sessionStorage.getItem('username')) {
+      let uname = sessionStorage.getItem('username');
+      this.user_service.getUserByUsername(uname).subscribe((res: any) => {
+        console.log(res);
+        this.user_ID = res.data[0].id;
+        let cartItem = { product_id: this.product_ID, user_id: this.user_ID };
+        console.log(cartItem);
 
-      this.cart_service.addItemToCart(cartItem).subscribe((res: any) => {
-        if (res.status == 201) {
-          this.quantity = 1;
-          console.log('added to cart');
-        } else {
-          console.log('not added');
-        }
+        this.cart_service.addItemToCart(cartItem).subscribe((res: any) => {
+          if (res.status == 201) {
+            this.quantity = 1;
+            console.log('added to cart');
+          } else {
+            console.log('not added');
+          }
+        });
       });
-    });
+    } else {
+      this.OpenLoginDialog();
+    }
   }
 
   increase_quantity() {
@@ -170,5 +175,20 @@ export class SingleProductComponent {
           }
         });
     }
+  }
+
+  OpenLoginDialog() {
+    Swal.fire({
+      title: 'Please Login to continue',
+      html: `Once logged in you can add items to your cart.`,
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: 'Login',
+      denyButtonText: `Cancel`,
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

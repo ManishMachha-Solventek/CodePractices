@@ -66,6 +66,20 @@
                 </div>
             </div>
 
+            <!-- price -->
+            <div class="mt-3">
+                <label class="h6">Price</label>
+                <input type="number" id="price" class="form-control" placeholder="Product price"
+                    formControlName="price">
+                <div class="text-center" *ngIf="addImageForm.get('price')?.invalid && 
+                                    addImageForm.get('price')?.errors && 
+                                    (addImageForm.get('price')?.dirty || addImageForm.get('price')?.touched)">
+                    <small class="text-danger" *ngIf="addImageForm.get('price')?.hasError('required')">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
 
         </form>
     </div>

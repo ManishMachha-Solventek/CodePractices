@@ -1,7 +1,9 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <div class="user" *ngIf="isAdmin===false">
-    <router-outlet></router-outlet>
+    <main role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </main>
 </div>
 <div class="admin" *ngIf="isAdmin===true">
     <app-admin-dashboard></app-admin-dashboard>

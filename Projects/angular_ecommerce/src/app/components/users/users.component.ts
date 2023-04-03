@@ -9,6 +9,7 @@ import { UsersEditService } from 'src/app/services/users/users-edit.service';
 import { AddUserService } from 'src/app/services/users/add-user.service';
 import { UsersService } from 'src/app/services/users/users.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 export interface User {
   id: number;
@@ -30,7 +31,8 @@ export class UsersComponent {
     private editOverlayService: UsersEditService,
     private addUserService: AddUserService,
     private _liveAnnouncer: LiveAnnouncer,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   sessionValid = sessionStorage.getItem('session');
@@ -42,30 +44,42 @@ export class UsersComponent {
   displayedColumns: string[];
 
   ngOnInit() {
-    sessionStorage.setItem('currentURL', 'users');
-    this.loadData();
+    if (
+      sessionStorage.getItem('username') &&
+      sessionStorage.getItem('role') == 'ROLE_ADMIN'
+    ) {
+      sessionStorage.setItem('currentURL', 'users');
+      this.loadData();
 
-    if (this.userRole == 'ROLE_ADMIN') {
-      this.displayedColumns = [
-        'id',
-        'fullname',
-        'username',
-        'gender',
-        'phonenumber',
-        'email',
-        'role',
-        'edit',
-        'delete',
-      ];
+      if (this.userRole == 'ROLE_ADMIN') {
+        this.displayedColumns = [
+          'id',
+          'fullname',
+          'username',
+          'gender',
+          'phonenumber',
+          'email',
+          'role',
+          'edit',
+          'delete',
+        ];
+      } else {
+        this.displayedColumns = [
+          'id',
+          'fullname',
+          'username',
+          'gender',
+          'phonenumber',
+          'email',
+        ];
+      }
+    } else if (
+      sessionStorage.getItem('username') &&
+      sessionStorage.getItem('role') == 'ROLE_USER'
+    ) {
+      this.AccessDeniedDialog();
     } else {
-      this.displayedColumns = [
-        'id',
-        'fullname',
-        'username',
-        'gender',
-        'phonenumber',
-        'email',
-      ];
+      this.OpenLoginDialog();
     }
   }
 
@@ -165,6 +179,42 @@ export class UsersComponent {
             Swal.fire('Access denied', 'No rights to delete', 'error');
           }
         );
+      }
+    });
+  }
+
+  OpenLoginDialog() {
+    Swal.fire({
+      title: 'Please Login to continue',
+      html: `Once logged in you can access users.`,
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: 'Login',
+      denyButtonText: `Cancel`,
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+      }
+      if (result.isDenied) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  AccessDeniedDialog() {
+    Swal.fire({
+      title: 'Access denied',
+      html: `You are not allowed to view this content.`,
+      icon: 'error',
+      showDenyButton: true,
+      confirmButtonText: 'Go back',
+      denyButtonText: `Cancel`,
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/store']);
+      }
+      if (result.isDenied) {
+        this.router.navigate(['/store']);
       }
     });
   }

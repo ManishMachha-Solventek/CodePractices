@@ -75,6 +75,7 @@ public class productsController {
                 image.setName(pathvarsMap.get("name"));
                 image.setActive(pathvarsMap.get("active"));
                 image.setInfo(pathvarsMap.get("info"));
+                image.setPrice(Integer.parseInt(pathvarsMap.get("price")));
                 image.setImage(File.getBytes());
                 service.updateImage(image);
                 map.put("status", 200);

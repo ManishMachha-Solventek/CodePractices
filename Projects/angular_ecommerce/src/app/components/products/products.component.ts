@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog/confirmation-dialog.service';
+import { Router } from '@angular/router';
 import { AddProductService } from 'src/app/services/products/add-product.service';
 import { ProductsEditService } from 'src/app/services/products/products-edit.service';
 import { ProductsService } from 'src/app/services/products/products.service';
@@ -32,6 +32,7 @@ export class ProductsComponent {
     'image',
     'info',
     'active',
+    'price',
     'edit',
     'delete',
   ];
@@ -41,12 +42,25 @@ export class ProductsComponent {
     private service: ProductsService,
     private editOverlayService: ProductsEditService,
     private fb: FormBuilder,
-    private add_service: AddProductService
+    private add_service: AddProductService,
+    private router: Router
   ) {}
 
   // on init
   ngOnInit() {
-    this.getImages();
+    if (
+      sessionStorage.getItem('username') &&
+      sessionStorage.getItem('role') == 'ROLE_ADMIN'
+    ) {
+      this.getImages();
+    } else if (
+      sessionStorage.getItem('username') &&
+      sessionStorage.getItem('role') == 'ROLE_USER'
+    ) {
+      this.AccessDeniedDialog();
+    } else {
+      this.OpenLoginDialog();
+    }
   }
 
   // add image form
@@ -105,6 +119,7 @@ export class ProductsComponent {
       image: 'data:image/jpg;base64,' + data.image,
       info: data.info,
       active: data.active,
+      price: data.price,
     };
   }
 
@@ -151,5 +166,41 @@ export class ProductsComponent {
       .catch(() => {
         console.log('user cancelled dialog');
       });
+  }
+
+  OpenLoginDialog() {
+    Swal.fire({
+      title: 'Please Login to continue',
+      html: `Once logged in you can access products.`,
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: 'Login',
+      denyButtonText: `Cancel`,
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+      }
+      if (result.isDenied) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  AccessDeniedDialog() {
+    Swal.fire({
+      title: 'Access denied',
+      html: `You are not allowed to view this content.`,
+      icon: 'error',
+      showDenyButton: true,
+      confirmButtonText: 'Go back',
+      denyButtonText: `Cancel`,
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/store']);
+      }
+      if (result.isDenied) {
+        this.router.navigate(['/store']);
+      }
+    });
   }
 }

@@ -11,7 +11,7 @@ export class UsersService {
   username = sessionStorage.getItem('username');
   password = sessionStorage.getItem('password');
 
-  baseURL = 'http://localhost:8080';
+  baseURL = 'http://192.168.0.123:8080';
 
   httpOptions = {
     headers: new HttpHeaders({

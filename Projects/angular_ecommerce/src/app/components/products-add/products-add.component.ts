@@ -34,6 +34,7 @@ export class ProductsAddComponent {
     name: ['', [Validators.required]],
     info: ['', [Validators.required]],
     active: ['', [Validators.required]],
+    price: ['', [Validators.required]],
   });
 
   public decline() {
@@ -53,7 +54,8 @@ export class ProductsAddComponent {
           this.currentFile,
           form.value.name,
           form.value.info,
-          form.value.active
+          form.value.active,
+          form.value.price,
         )
         .subscribe(
           (response: any) => {

@@ -50,6 +50,25 @@
   width: 100%;
 }
 
+.cart .place-order{
+  margin-bottom: 70px;
+}
+
+.cart .empty-cart {
+  width: fit-content;
+}
+
+.cart #sessionBAD {
+  box-shadow: 0px 0px 5px blue;
+  border-radius: 20px;
+  width: 70%;
+  height: 10;
+}
+
+.cart #sessionBAD .row .col1 {
+  padding-top: 16%;
+}
+
 /* -----------------------------PRODUCTS----------------------------- */
 
 .products .mat-sort-header-stem,
@@ -265,7 +284,7 @@ mat-list-item {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0px 0px 5px rgb(255, 161, 247);
+  box-shadow: 0px 0px 5px blue;
   border-radius: 20px;
   margin-top: 20px;
   margin-bottom: 20px;

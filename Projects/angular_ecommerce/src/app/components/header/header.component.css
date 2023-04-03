@@ -1,6 +1,6 @@
 .header {
   font-family: "Dancing Script", cursive;
-  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, green);
+  background: linear-gradient(to right, rgb(98, 0, 255),blue);
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;

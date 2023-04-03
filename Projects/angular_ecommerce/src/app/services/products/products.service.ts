@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProductsService {
   constructor(private http: HttpClient) {}
-  baseURL = 'http://localhost:8080/products';
+  baseURL = 'http://192.168.0.123:8080/products';
 
   username = sessionStorage.getItem('username');
   password = sessionStorage.getItem('password');
@@ -30,21 +30,35 @@ export class ProductsService {
     return this.http.get(`${this.baseURL}/${id}`);
   }
 
-  postImages(image: File, name: string, info: string, active: string) {
+  postImages(
+    image: File,
+    name: string,
+    info: string,
+    active: string,
+    price: any
+  ) {
     const data: FormData = new FormData();
     data.append('image', image);
     data.append('name', name);
     data.append('info', info);
-    data.append('active', active);
+    data.append('price', price);
     return this.http.post(this.baseURL, data);
   }
 
-  putImages(id: any, image: File, name: string, info: string, active: string) {
+  putImages(
+    id: any,
+    image: File,
+    name: string,
+    info: string,
+    active: string,
+    price: any
+  ) {
     const data: FormData = new FormData();
     data.append('image', image);
     data.append('name', name);
     data.append('info', info);
     data.append('active', active);
+    data.append('price', price);
     return this.http.put(`${this.baseURL}/${id}`, data);
   }
 

@@ -27,6 +27,7 @@ export class StoreComponent {
       image: 'data:image/jpg;base64,' + data.image,
       info: data.info,
       active: data.active,
+      price: data.price,
     };
   }
 

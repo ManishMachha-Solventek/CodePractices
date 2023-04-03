@@ -3,8 +3,8 @@
   top: 0;
   background-image: linear-gradient(
     to left,
-    rgb(255, 223, 255),
-    rgb(255, 222, 222)
+    rgb(223, 228, 255),
+    rgb(224, 222, 255)
   );
   width: 100%;
   z-index: 2;
@@ -15,7 +15,7 @@
   padding: 10px;
   border-radius: 10px;
   width: fit-content;
-  color: rgb(159, 0, 180);
+  color: blue;
 }
 
 .navbar .navbar-nav > .active > a {
@@ -23,7 +23,7 @@
 }
 
 .navbar .navbar-nav a:hover {
-  color: rgb(159, 0, 180);
+  color: blue;
   transform: scale(1.05);
   font-weight: 600;
 }
@@ -49,11 +49,11 @@
 }
 
 .navbar .dropdown button {
-  border: 1px solid rgb(167, 0, 189);
+  border: 1px solid blue;
 }
 .navbar .dropdown button:hover {
-  border: 1px solid rgb(170, 60, 170);
-  background-color: rgb(170, 60, 170);
+  border: 1px solid blue;
+  background-color: rgb(70, 67, 255);
 }
 
 .navbar .dropdown-menu a {

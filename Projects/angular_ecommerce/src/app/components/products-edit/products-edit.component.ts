@@ -31,6 +31,7 @@ export class ProductsEditComponent {
     name: ['', [Validators.required]],
     info: ['', [Validators.required]],
     active: ['', [Validators.required]],
+    price: ['', [Validators.required]],
   });
 
   selectFile(event: any): void {
@@ -51,7 +52,8 @@ export class ProductsEditComponent {
           this.currentFile,
           this.imageForm.value.name,
           this.imageForm.value.info,
-          this.imageForm.value.active
+          this.imageForm.value.active,
+          this.imageForm.value.price
         )
         .subscribe(
           (response: any) => {
@@ -83,6 +85,7 @@ export class ProductsEditComponent {
           name: res.name,
           info: res.info,
           active: res.active,
+          price: res.price,
         });
     });
   }

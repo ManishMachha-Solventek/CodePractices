@@ -19,6 +19,8 @@
                 </li><br>
             </ol>
         </mat-drawer>
-        <router-outlet></router-outlet>
+        <main role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </main>
     </mat-drawer-container>
 </div>
