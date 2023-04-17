@@ -6,11 +6,10 @@
   </mat-form-field>
 </div>
 
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" multiTemplateDataRows
-  class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8">
 
   <ng-container matColumnDef="company">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by company">Company</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
     <td mat-cell *matCellDef="let element">{{element.group_name}}</td>
   </ng-container>
 

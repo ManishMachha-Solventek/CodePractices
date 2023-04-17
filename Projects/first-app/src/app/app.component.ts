@@ -18,10 +18,14 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('collapsed, void', style({ height: '0px' })),
       state('expanded', style({ height: '*' })),
       transition(
         'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+      transition(
+        'expanded <=> void',
         animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
       ),
     ]),
@@ -70,10 +74,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   getGroups() {
     this.service.getGroups().subscribe((res: any) => {
-      console.log(res);
 
       let Data: any[];
-      this.dataSource = new MatTableDataSource(res);
 
       // grouping by key
       Data = res.reduce(function (r: any, a: any) {
@@ -88,9 +90,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       }));
 
       this.dataSource = new MatTableDataSource(converted_res);
-      this.dataSource.sort = this.sort;
-      console.log(converted_res);
-      this.dataSource.paginator = this.paginator;
     });
   }
 }
