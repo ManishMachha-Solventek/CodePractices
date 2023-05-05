@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProductsService {
   constructor(private http: HttpClient) {}
-  baseURL = 'http://192.168.0.123:8080/products';
+  baseURL = 'http://localhost:8080/products';
 
   username = sessionStorage.getItem('username');
   password = sessionStorage.getItem('password');

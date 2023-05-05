@@ -13,6 +13,7 @@ export class CartComponent {
   products: any[];
   user_ID: any;
   myCartItems: any[] = [];
+
   constructor(
     private service: CartService,
     private user_service: UsersService,
@@ -28,6 +29,7 @@ export class CartComponent {
       image: 'data:image/jpg;base64,' + data.image,
       info: data.info,
       quantity: data.quantity,
+      price: data.price,
     };
   }
 
@@ -72,12 +74,12 @@ export class CartComponent {
   }
 
   removeFromCart(product_id: any) {
+    this.myCartItems = this.removeObjectWithId(this.myCartItems, product_id);
+
     this.service
       .removeFromCart(this.user_ID, product_id)
       .subscribe((res: any) => {
         if (res.status == 200) {
-          this.myCartItems = [];
-          this.getCartItems();
           console.log('item removed');
         } else {
           console.log('not removed');
@@ -85,14 +87,38 @@ export class CartComponent {
       });
   }
 
+  // remove item from cart in template
+  removeObjectWithId(arr: any[], id: number) {
+    const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
+
+    if (objWithIdIndex > -1) {
+      arr.splice(objWithIdIndex, 1);
+    }
+
+    return arr;
+  }
+
+  increase_quantityWithId(arr: any[], id: number) {
+    let index = -1;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id == id) {
+        index = i;
+        break;
+      }
+    }
+    console.log(index);
+    return index;
+  }
+
   increase_quantity(product_id: any) {
+    let index = this.increase_quantityWithId(this.myCartItems, product_id);
+    this.myCartItems[index].quantity++;
+
     this.service
       .increaseItemQuantity(this.user_ID, product_id)
       .subscribe((res: any) => {
         if (res.status == 201) {
           console.log('quantity increased');
-          this.myCartItems = [];
-          this.getCartItems();
         } else {
           console.log('not increased');
         }
@@ -100,13 +126,14 @@ export class CartComponent {
   }
 
   decrease_quantity(product_id: any) {
+    let index = this.increase_quantityWithId(this.myCartItems, product_id);
+    this.myCartItems[index].quantity--;
+
     this.service
       .decreaseItemQuantity(this.user_ID, product_id)
       .subscribe((res: any) => {
         if (res.status == 201) {
           console.log('quantity decreased');
-          this.myCartItems = [];
-          this.getCartItems();
         } else {
           console.log('not decreased');
         }
