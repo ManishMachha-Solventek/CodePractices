@@ -1,0 +1,66 @@
+<form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+
+  <!-- Name -->
+  <div>
+    <label for="name">Name </label>
+    <input type="text" id="name" name="name" formControlName="name">
+
+    <div *ngIf="skillsForm.get('name')?.invalid && (skillsForm.get('name')?.dirty || skillsForm.get('name')?.touched)">
+      <div *ngIf="skillsForm.get('name')?.errors?.['required']">
+        <small>name is required</small>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Skills -->
+  <div formArrayName="skills">
+    <div *ngFor="let skill of skills.controls; let i=index">
+      <div [formGroupName]="i" class="skill">
+
+        <!-- Skill name -->
+        <div>
+          skill-{{i+1}} name :
+          <input type="text" formControlName="skill">
+
+          <div
+            *ngIf="skills.controls[i].get('skill')?.invalid && (skills.controls[i].get('skill')?.dirty || skills.controls[i].get('skill')?.touched)">
+            <div *ngIf="skills.controls[i].get('skill')?.errors?.['required']">
+              <small>name is required</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill exp -->
+        <div>
+          exp:
+          <input type="text" formControlName="exp">
+
+          <div
+            *ngIf="skills.controls[i].get('exp')?.invalid && (skills.controls[i].get('exp')?.dirty || skills.controls[i].get('exp')?.touched)">
+            <div *ngIf="skills.controls[i].get('exp')?.errors?.['required']">
+              <small>exp is required</small>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button (click)="removeSkill(i)">Remove skill</button>
+        </div>
+
+      </div><br>
+    </div>
+  </div>
+
+  <p class="add-submit">
+    <button type="button" (click)="addSkill()">Add skill</button>
+
+    <button type="submit" [disabled]="skillsForm.invalid">Submit</button>
+  </p>
+
+</form>
+
+<div class="result">
+  {{this.skillsForm.value | json}}
+</div>
