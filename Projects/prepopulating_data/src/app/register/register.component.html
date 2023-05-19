@@ -1,0 +1,116 @@
+            <div class="con card text-black bg-light mt-5">
+                <div class="card-body p-md-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                            <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-0 ">Book Appointment</p>
+
+                            <form [formGroup]="patientsaveform" (ngSubmit)="registered()">
+                                <div class="form-group mb-3">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" maxlength="15" class="form-control" formControlName="fname"
+                                        id="fname" data-toggle="tooltip" data-placement="right"
+                                        title="Enter Patient Name">
+                                    <div class="form-text text-danger"
+                                        *ngIf="fname.errors?.['required'] && (fname.touched || fname.dirty)">
+                                        *First Name is required.
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="fname.errors?.['pattern'] && (fname.touched || fname.dirty)">
+                                        *Enter only Alphabet.
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" maxlength="15" class="form-control" formControlName="lname"
+                                        data-toggle="tooltip" data-placement="right" title="Enter Patient lastName">
+                                    <div class="form-text text-danger"
+                                        *ngIf="lname.errors?.['required'] && (lname.touched || lname.dirty)">
+                                        *Last Name is required.
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="lname.errors?.['pattern'] && (lname.touched || lname.dirty)">
+                                        *Enter only Alphabet.
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="email">Email Id</label>
+                                    <input type="email" maxlength="20" class="form-control" formControlName="email"
+                                        data-toggle="tooltip" data-placement="right" title="Enter Patient lastName">
+                                    <div class="form-text text-danger"
+                                        *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+                                        *Email is required.
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="age">Age</label>
+                                    <input type="number" max="100" class="form-control" formControlName="age"
+                                        data-toggle="tooltip" data-placement="right" title="Enter Patient age">
+                                    <div class="form-text text-danger"
+                                        *ngIf="age.errors?.['required'] && (age.touched || age.dirty)">
+                                        *age is required.
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="age.errors?.['pattern'] && (age.touched || age.dirty)">
+                                        *Enter only Number.
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="phone">Phone No</label>
+                                    <input type="text" maxlength="10" minlength="10" class="form-control"
+                                        formControlName="phone" id="phone" data-toggle="tooltip" data-placement="right"
+                                        title="Enter Patient Phone">
+                                    <div class="form-text text-danger"
+                                        *ngIf="Phone.errors?.['required'] && (Phone.touched || Phone.dirty)">
+                                        *Phone number is required.
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="Phone.errors?.['minLength'] && (Phone.touched || Phone.dirty)">
+                                        *Phone number is short.
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-check-inline mb-3">
+                                    <div class="form-text text-dark" *ngIf="Gender.errors?.['required']">
+                                        Select:
+                                    </div>
+                                    <label for="gender">Gender</label>
+                                    <label class="form-check-label" style="padding-left:15px;"
+                                        for="inlineRadio1">Male</label>
+                                    <input mdbRadio class="form-check-input" formControlName="gender" type="radio"
+                                        name="gender" id="inlineRadio1" value="male" />
+                                    <label class="form-check-label" style="padding-left:15px;"
+                                        for="inlineRadio2">Female</label>
+                                    <input mdbRadio class="form-check-input" formControlName="gender" type="radio"
+                                        name="gender" id="inlineRadio2" value="Female" />
+                                    <label class="form-check-label" style="padding-left:15px;"
+                                        for="inlineRadio2">Other</label>
+                                    <input mdbRadio class="form-check-input" formControlName="gender" type="radio"
+                                        name="gender" id="inlineRadio2" value="Other" />
+                                </div>
+                                <div class="d-flex justify-content-center pt-3">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                                <div class="mt-2 text-center text-success" *ngIf="mystatus==1">
+                                    <strong>registered successfully</strong>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                            <img src="../../assets/bookappo.webp" style="margin-left: 50px;" class="img-fluid"
+                                alt="Sample image">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+     
+  

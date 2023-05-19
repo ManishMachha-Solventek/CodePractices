@@ -1,0 +1,19 @@
+<div class="conatiner p-4">
+    <div class="modal-header">
+      
+      <div class="close-btn-div">
+        <h4>Do want to delete {{data.fname}}</h4>
+
+        <button class="btn btn-sm" [mat-dialog-close]="false">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-danger" [mat-dialog-close]="false">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="delete()">Delete</button>
+        </div>
+        </div>

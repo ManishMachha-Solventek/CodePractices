@@ -1,0 +1,45 @@
+<div class="container p-4">
+
+    <div class="close-btn-div">
+        <h1>Update patient</h1>
+
+        <button class="btn btn-sm btn-danger" [mat-dialog-close]="false">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group mb-2">
+            <label>First Name</label>
+            <input type="text" class="form-control" formControlName="fname">
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Last Name</label>
+            <input type="text" class="form-control" formControlName="lname">
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Phone</label>
+            <input type="number" class="form-control" formControlName="phone">
+        </div>
+        <div class="form-group mb-2">
+            <label>Age</label>
+            <input type="number" class="form-control" formControlName="age">
+        </div>
+        <div class="form-group mb-2">
+            <label>Gender</label>
+            <input type="text" class="form-control" formControlName="gender">
+        </div>
+        <div class="form-group mb-2">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+
+        <div class="d-flex flex-row-reverse mt-4">
+            <button class="btn btn-success float-end" type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,10 @@
+.close-btn-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.close-btn-div button{
+   margin-left: 12px;
+   margin-bottom: 20px;
+}

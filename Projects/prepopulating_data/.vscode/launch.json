@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-PrafullProductApplication<Prafull_product>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.prafull_product.PrafullProductApplication",
+      "projectName": "Prafull_product",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
