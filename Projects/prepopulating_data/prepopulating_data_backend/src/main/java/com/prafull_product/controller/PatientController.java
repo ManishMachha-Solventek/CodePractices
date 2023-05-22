@@ -174,7 +174,7 @@ public class PatientController {
 			patient.setPhone(patientDetail.getPhone());
 			patientService.save(patient);
 			map.put("status", 1);
-			map.put("data", patientService.findById(id));
+			map.put("message","updated successfully");
 			return new ResponseEntity<>(map, HttpStatus.OK);
 		} catch (Exception ex) {
 			map.clear();

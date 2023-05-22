@@ -1,5 +1,6 @@
 package com.examples;
 
+@SuppressWarnings("all")
 public class InnerClasses_objectCloning implements Cloneable {
     int a;
     int b;
@@ -46,7 +47,7 @@ class ZZ {
         System.out.println(obj.c);
 
         System.out.println(obj1.x);
-        
+
         System.out.println(obj1.z);
 
         System.out.println(obj2.a);

@@ -2,43 +2,42 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PatientService {
-
-  constructor(private HttpClient: HttpClient) { }
-  private baseURL = "http://localhost:8080/patients";
+  constructor(private http: HttpClient) {}
+  private baseURL = 'http://localhost:8080/patients';
 
   login(username: any, password: any) {
-    return this.HttpClient.get<any>(`${this.baseURL}/login/${username}/${password}`);
+    return this.http.get<any>(`${this.baseURL}/login/${username}/${password}`);
   }
 
   savePatient(patient: any) {
     const baseUrl = 'http://localhost:8080/patients';
-    return this.HttpClient.post<any>(baseUrl, patient);
+    return this.http.post<any>(baseUrl, patient);
   }
 
-  getPatientList(){
-    return this.HttpClient.get<any>(`${this.baseURL}`);
+  getPatientList() {
+    return this.http.get<any>(`${this.baseURL}`);
   }
 
-  getPatientById(id: number){
-    return this.HttpClient.get<any>(`${this.baseURL}/${id}`);
-  }
-  
-  updatePatientById(id: number,patient:any){
-    return this.HttpClient.put(`${this.baseURL}/${id}`, patient);
+  getPatientById(id: number) {
+    return this.http.get<any>(`${this.baseURL}/${id}`);
   }
 
-  deletePatient(id: number){
-    return this.HttpClient.delete(`${this.baseURL}/${id}`);
+  updatePatientById(id: number, patient: any) {
+    return this.http.put(`${this.baseURL}/${id}`, patient);
   }
 
-  prepopulate(){
-    return this.HttpClient.get<any>(`${this.baseURL}/prepopulate`);
+  deletePatient(id: number) {
+    return this.http.delete(`${this.baseURL}/${id}`);
   }
 
-  deleteAll(){
-    return this.HttpClient.delete<any>(`${this.baseURL}/deleteall`);
+  prepopulate() {
+    return this.http.get<any>(`${this.baseURL}/prepopulate`);
+  }
+
+  deleteAll() {
+    return this.http.delete<any>(`${this.baseURL}/deleteall`);
   }
 }
