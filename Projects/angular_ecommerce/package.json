@@ -26,13 +26,13 @@
     "bootstrap-icons": "^1.10.3",
     "ng-image-slider": "^7.0.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.7.3",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.2",
-    "@angular/cli": "~15.1.2",
+    "@angular/cli": "^15.2.10",
     "@angular/compiler-cli": "^15.1.0",
     "@angular/localize": "^15.1.0",
     "@types/node": "^18.15.10",

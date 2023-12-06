@@ -49,6 +49,13 @@ export class CartService {
     );
   }
 
+  removeAllFromCart(user_id: any) {
+    return this.http.delete<Object[]>(
+      `${this.baseURL}/cart/removeAll/${user_id}`,
+      this.httpOptions
+    );
+  }
+
   getAllCartItemsByUserIdProductId(user_id: any, product_id: any) {
     return this.http.get<Object[]>(
       `${this.baseURL}/cart/cart_items/${user_id}/${product_id}`,

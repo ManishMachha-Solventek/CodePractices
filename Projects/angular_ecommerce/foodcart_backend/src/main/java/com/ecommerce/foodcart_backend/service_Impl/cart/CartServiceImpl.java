@@ -45,4 +45,9 @@ public class CartServiceImpl implements CartService {
         repo.save(cart_);
     }
 
+    @Override
+    public void removeAllCartItems(int user_id) {
+        repo.removeAllFromCart(user_id);
+    }
+
 }

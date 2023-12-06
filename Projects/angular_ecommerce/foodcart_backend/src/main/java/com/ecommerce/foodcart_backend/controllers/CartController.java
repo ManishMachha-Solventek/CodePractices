@@ -104,6 +104,23 @@ public class CartController {
         }
     }
 
+    @DeleteMapping("removeAll/{user_id}")
+    public ResponseEntity<?> removeAllFromCart(@PathVariable Map<String, String> pathVarsMap) {
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        int user_id = Integer.parseInt(pathVarsMap.get("user_id"));
+        try {
+            repo.removeAllFromCart(user_id);
+            map.put("status", 200);
+            map.put("message", "all items removed Successfully!");
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        } catch (Exception e) {
+            map.clear();
+            map.put("status", 500);
+            map.put("message", "Internal server error");
+            return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("cart_items/{user_id}/{product_id}")
     public ResponseEntity<?> getAllCartItemsByUserIdProductId(@PathVariable Map<String, String> pathVarsMap) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();

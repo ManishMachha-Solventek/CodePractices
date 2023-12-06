@@ -127,6 +127,21 @@ export class CartComponent {
 
   decrease_quantity(product_id: any) {
     let index = this.increase_quantityWithId(this.myCartItems, product_id);
+
+    if (this.myCartItems[index].quantity == 1) {
+      this.myCartItems.splice(index, 1);
+
+      this.service
+        .removeFromCart(this.user_ID, product_id)
+        .subscribe((res: any) => {
+          if (res.status == 201) {
+            console.log('item removed');
+          } else {
+            console.log('item not removed');
+          }
+        });
+    }
+
     this.myCartItems[index].quantity--;
 
     this.service
@@ -138,5 +153,17 @@ export class CartComponent {
           console.log('not decreased');
         }
       });
+  }
+
+  removeAllItems() {
+    this.myCartItems = [];
+    this.service.removeAllFromCart(this.user_ID).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.ngOnInit();
+        console.log('all items removed');
+      } else {
+        console.log('all items not removed');
+      }
+    });
   }
 }
